@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              Height="250" Width="200">
     <Grid>
-        <Image Source="{Binding Movie.Poster}"></Image>
+        <Image
+            Source="{Binding Movie.Poster}"
+            Margin="2"
+            Stretch="Uniform"/>
     </Grid>
 </UserControl>

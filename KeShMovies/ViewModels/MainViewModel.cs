@@ -10,9 +10,9 @@ namespace KeShMovies.ViewModels;
 public class MainViewModel : BaseViewModel
 {
     private readonly NavigationStore _navigationStore;
-    public BaseViewModel CurrentViewModel { get; set; }
+    public BaseViewModel? CurrentViewModel => _navigationStore.CurrentViewModel;
 
-	public MainViewModel(NavigationStore navigationStore)
+    public MainViewModel(NavigationStore navigationStore)
 	{
         _navigationStore = navigationStore;
         navigationStore.CurrentViewModelChanged += NavigationStore_CurrentViewModelChanged;
