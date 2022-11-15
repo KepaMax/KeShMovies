@@ -18,8 +18,6 @@ namespace KeShMovies.UserControls;
 
 public partial class UC_Movie : UserControl
 {
-
-
     public Movie Movie
     {
         get { return (Movie)GetValue(MovieProperty); }

@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
     <Grid x:Name="grid">
-        
+
+        <ContentControl>
+            <ContentControl.Resources>
+                <!--<DataTemplate DataType="{x:Type ViewModels:MainViewModel}">
+                    <Views:MainView />
+                </DataTemplate>-->
+            </ContentControl.Resources>
+        </ContentControl>
+
     </Grid>
 </Window>
