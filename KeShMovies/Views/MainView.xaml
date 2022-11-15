@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KeShMovies.Views"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="grid">
         
     </Grid>
 </Window>
