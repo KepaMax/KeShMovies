@@ -10,33 +10,29 @@ using System.Windows;
 using KeShMovies.ViewModels;
 using KeShMovies.Navigation;
 
-namespace KeShMovies
+namespace KeShMovies;
+
+public partial class App : Application
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    private void Application_Startup(object sender, StartupEventArgs e)
     {
-        private void Application_Startup(object sender, StartupEventArgs e)
-        {
-            NavigationStore navigationStore = new();
+        NavigationStore navigationStore = new();
 
-            var builder = new ContainerBuilder();
+        var builder = new ContainerBuilder();
 
-            builder.RegisterInstance(navigationStore).SingleInstance();
+        builder.RegisterInstance(navigationStore).SingleInstance();
 
-            builder.RegisterType<MainViewModel>();
-            builder.RegisterType<HomeViewModel>();
+        builder.RegisterType<MainViewModel>();
+        builder.RegisterType<HomeViewModel>();
 
-            var container = builder.Build();
+        var container = builder.Build();
 
-            navigationStore.CurrentViewModel = container.Resolve<HomeViewModel>();
+        navigationStore.CurrentViewModel = container.Resolve<HomeViewModel>();
 
-            MainView mainView = new();
-            mainView.DataContext= container.Resolve<MainViewModel>();
+        MainView mainView = new();
+        mainView.DataContext= container.Resolve<MainViewModel>();
 
 
-            mainView.ShowDialog();
-        }
+        mainView.Show();
     }
 }

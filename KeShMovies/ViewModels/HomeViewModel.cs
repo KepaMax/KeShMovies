@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KeShMovies.ViewModels
+namespace KeShMovies.ViewModels;
+
+internal class HomeViewModel : BaseViewModel
 {
-    internal class HomeViewModel : BaseViewModel
-    {
-    }
 }

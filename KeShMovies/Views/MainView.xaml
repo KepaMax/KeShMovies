@@ -7,15 +7,11 @@
         xmlns:ViewModels="clr-namespace:KeShMovies.ViewModels"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800">
-    <Grid x:Name="grid">
-
-        <ContentControl>
-            <ContentControl.Resources>
-                <DataTemplate DataType="{x:Type ViewModels:HomeViewModel}">
-                    <Views:HomeView/>
-                </DataTemplate>
-            </ContentControl.Resources>
-        </ContentControl>
-
-    </Grid>
+    <ContentControl Content="{Binding CurrentViewModel}">
+        <ContentControl.Resources>
+            <DataTemplate DataType="{x:Type ViewModels:HomeViewModel}">
+                <Views:HomeView/>
+            </DataTemplate>
+        </ContentControl.Resources>
+    </ContentControl>
 </Window>
