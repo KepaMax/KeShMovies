@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace KeShMovies.ViewModels;
 
-internal class HomeViewModel : BaseViewModel
+public class HomeViewModel : BaseViewModel
 {
+
 }

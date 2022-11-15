@@ -6,12 +6,16 @@
         xmlns:Views="clr-namespace:KeShMovies.Views"
         xmlns:ViewModels="clr-namespace:KeShMovies.ViewModels"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
+        Title="MainView" Height="450" Width="800" Background="#191B1F">
+    
     <ContentControl Content="{Binding CurrentViewModel}">
         <ContentControl.Resources>
+            
             <DataTemplate DataType="{x:Type ViewModels:HomeViewModel}">
                 <Views:HomeView/>
             </DataTemplate>
+            
         </ContentControl.Resources>
     </ContentControl>
+    
 </Window>
