@@ -8,5 +8,5 @@ namespace KeShMovies.ViewModels;
 
 public class HomeViewModel : BaseViewModel
 {
-
+    public string? SearchText { get; set; }
 }

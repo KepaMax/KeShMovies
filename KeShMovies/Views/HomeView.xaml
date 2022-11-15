@@ -16,7 +16,7 @@
             <ColumnDefinition Width="2*" MaxWidth="300"/>
         </Grid.ColumnDefinitions>
 
-        
+
 
         <Grid>
             <Grid.RowDefinitions>
@@ -34,6 +34,7 @@
             </Grid.RowDefinitions>
 
             <TextBox
+                Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
                 BorderThickness="2"
                 BorderBrush="#35373D"
                 VerticalAlignment="Center"
