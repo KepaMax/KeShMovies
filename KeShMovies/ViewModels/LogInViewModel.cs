@@ -4,8 +4,12 @@ using KeShMovies.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace KeShMovies.ViewModels;
 
@@ -13,6 +17,11 @@ public class LogInViewModel :BaseViewModel
 {
     private readonly IUserRepository _userRepository;
     private readonly List<User>? _users;
+
+    private static string usernameRegex = @"^(?=[a-zA-Z])[-\w.]{2,23}([a-zA-Z\d]|(?<![-.])_)$";
+    private static string passwordRegex = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$";
+
+    public ICommand LogInCommand { get; set; }
     public string UsernameOrEmail { get; set; } = default!;
     public string Password { get; set; } = default!;
 
@@ -20,5 +29,76 @@ public class LogInViewModel :BaseViewModel
     {
         _userRepository = userRepository;
         _users = _userRepository.GetList() != null ? _userRepository.GetList() : new();
+
+        LogInCommand = new RelayCommand(ExecuteLogInCommand, CanExecuteLogInCommand);
+
     }
+
+    private void ExecuteLogInCommand(object? parametr)
+    {
+
+
+        User? user = null;
+
+        if (IsValidEmail())
+        {
+            user = _users?.Find(u => u.Email == UsernameOrEmail);
+
+            if(user is not null  && user.Password==Password)
+            {
+                MessageBox.Show("Fuck Yeah");
+                return;
+
+            }
+
+            MessageBox.Show("Email Not Found");
+            return;
+        }
+
+
+
+        user = _users?.Find(u => u.Username == UsernameOrEmail);
+        if (user is not null && user.Password == Password)
+        {
+            MessageBox.Show("Fuck Yeah");
+            return;
+        }
+
+        MessageBox.Show("Username Not Found");
+    }
+
+
+    private bool CanExecuteLogInCommand(object? parametr)
+    {
+        if (parametr is StackPanel sp)
+        {
+            foreach (var txt in sp.Children.OfType<TextBox>())
+            {
+                if (string.IsNullOrWhiteSpace(txt.Text))
+                    return false;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool IsValidEmail()
+    {
+        if (UsernameOrEmail is null)
+            return false;
+
+        try
+        {
+            MailAddress m = new MailAddress(UsernameOrEmail);
+
+            return true;
+        }
+        catch (FormatException)
+        {
+            return false;
+        }
+    }
+
 }

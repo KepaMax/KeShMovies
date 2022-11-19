@@ -26,12 +26,13 @@ public partial class App : Application
         builder.RegisterType<MainViewModel>();
         builder.RegisterType<HomeViewModel>();
         builder.RegisterType<SignUpViewModel>();
+        builder.RegisterType<LogInViewModel>();
         builder.RegisterType<EfUserRepository>().As<IUserRepository>();
         
 
         var container = builder.Build();
 
-        navigationStore.CurrentViewModel = container.Resolve<SignUpViewModel>();
+        navigationStore.CurrentViewModel = container.Resolve<LogInViewModel>();
 
         MainView mainView = new();
         mainView.DataContext= container.Resolve<MainViewModel>();

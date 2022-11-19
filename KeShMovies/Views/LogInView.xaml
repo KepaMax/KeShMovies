@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:usercontrols="clr-namespace:KeShMovies.UserControls"
-             xmlns:local="clr-namespace:KeShMovies.Views"
+             xmlns:local="clr-namespace:KeShMovies.Views" 
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="800">
     <Border CornerRadius="12">
@@ -24,8 +24,8 @@
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
-                    <MediaElement Source="/Views/Movie Logo.gif"
-                           Width="100" Height="100" LoadedBehavior="Play"/>
+                    <Image Source="/Views/Movie Logo.gif"
+                           Width="100" Height="100" />
                     <TextBlock Text="LOG IN"
                                Foreground="White"
                                Margin="5"
@@ -69,7 +69,8 @@
                              VerticalContentAlignment="Center"
                               />
                     <Button            
-                        Command="{Binding ContinueCommand}"
+                        Command="{Binding LogInCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}}"
                             BorderThickness="0"
                             Content="LOG IN"
                             Foreground="White"
@@ -109,14 +110,13 @@
                                FontFamily="Montserrat"/>
                         <TextBlock 
                                    
+                            Text="Ishle ogrash"
                                Foreground="White"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                Cursor="Hand"
-                               Margin="8,0,0,0">
-<Hyperlink>Sign Up Now</Hyperlink>
-                        </TextBlock>
+                               Margin="8,0,0,0"/>
                         
                     </StackPanel>
                 </StackPanel>
