@@ -110,6 +110,7 @@
                                FontFamily="Montserrat"/>
                         <TextBlock 
                                    
+                            
                                Foreground="White"
                                FontSize="12"
                                FontWeight="Medium"
