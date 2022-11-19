@@ -24,6 +24,7 @@ public partial class App : Application
 
         builder.RegisterType<MainViewModel>();
         builder.RegisterType<HomeViewModel>();
+        
 
         var container = builder.Build();
 
