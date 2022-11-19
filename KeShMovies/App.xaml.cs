@@ -24,14 +24,16 @@ public partial class App : Application
 
         builder.RegisterType<MainViewModel>();
         builder.RegisterType<HomeViewModel>();
+        builder.RegisterType<SignUpViewModel>();
         
 
         var container = builder.Build();
 
-        navigationStore.CurrentViewModel = container.Resolve<HomeViewModel>();
+        navigationStore.CurrentViewModel = container.Resolve<SignUpViewModel>();
 
         MainView mainView = new();
         mainView.DataContext= container.Resolve<MainViewModel>();
+
 
 
         mainView.Show();

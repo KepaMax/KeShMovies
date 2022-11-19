@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Controls;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -11,16 +12,6 @@ namespace KeShMovies.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "List<string>",
-                columns: table => new
-                {
-                    Capacity = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                });
-
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
