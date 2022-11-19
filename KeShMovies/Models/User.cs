@@ -16,4 +16,15 @@ public class User
     public string? Password { get; set; }
     public string? WatchList { get; set; }
     public string? Favorites { get; set; }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is User other)
+        {
+            return Email == other.Email && Username == other.Username && Password == other.Password;
+        }
+
+        return false;
+    }
+
 }

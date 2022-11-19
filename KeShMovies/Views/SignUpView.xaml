@@ -38,13 +38,13 @@
                             Margin="0,35,0,0">
                     <Image Source="/StaticFiles/Images/logo.png"
                            Width="100" Height="100"/>
-                    <TextBlock Text="RJ CODE"
+                    <TextBlock Text="SIGN UP"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Learning to code is useful no matter what your career ambitions are."
+                    <TextBlock Text="Sono Sharingan Omae wa doko Made Mieteiru"
                                Foreground="LightGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -80,7 +80,7 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
                              VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
+                             Margin="0,5,0,10"
                              materialDesign:HintAssist.Hint="Email"
                              materialDesign:TextFieldAssist.UnderlineBrush="Green"
                              materialDesign:HintAssist.Foreground="DarkGray"
@@ -95,14 +95,14 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
                              VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
+                             Margin="0,5,0,10"
                              materialDesign:HintAssist.Hint="Username"
                         Text="{Binding Username,UpdateSourceTrigger=PropertyChanged}"
                              materialDesign:TextFieldAssist.UnderlineBrush="Green"
                              materialDesign:HintAssist.Foreground="DarkGray"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center" />
-                    
+
                     <usercontrols:BindablePasswordBox
                         FontSize="15"
                         Margin="0,5,0,0"
@@ -110,6 +110,7 @@
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
+                             materialDesign:HintAssist.HelperText="At least 8 characters"
                              VerticalContentAlignment="Center"
                               />
                     <!--<PasswordBox x:Name="txtPass"
@@ -128,6 +129,7 @@
 
                     <Button            
                         Command="{Binding ContinueCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}}"
                             BorderThickness="0"
                             Content="SIGN UP"
                             Foreground="White"

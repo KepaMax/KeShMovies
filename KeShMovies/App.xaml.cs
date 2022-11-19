@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using KeShMovies.ViewModels;
 using KeShMovies.Navigation;
+using KeShMovies.Repositories;
 
 namespace KeShMovies;
 
@@ -25,6 +26,7 @@ public partial class App : Application
         builder.RegisterType<MainViewModel>();
         builder.RegisterType<HomeViewModel>();
         builder.RegisterType<SignUpViewModel>();
+        builder.RegisterType<EfUserRepository>().As<IUserRepository>();
         
 
         var container = builder.Build();
