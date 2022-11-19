@@ -43,7 +43,7 @@
                                Margin="0,5,0,0"/>
                     <TextBox
                         FontSize="15"
-                        Text="{Binding Email,UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding UsernameOrEmail,UpdateSourceTrigger=PropertyChanged}"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"

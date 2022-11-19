@@ -13,16 +13,12 @@ public class LogInViewModel :BaseViewModel
 {
     private readonly IUserRepository _userRepository;
     private readonly List<User>? _users;
-
-    public string Email { get; set; } = default!;
-    public string Username { get; set; } = default!;
+    public string UsernameOrEmail { get; set; } = default!;
     public string Password { get; set; } = default!;
 
     public LogInViewModel(IUserRepository userRepository)
     {
         _userRepository = userRepository;
-
         _users = _userRepository.GetList() != null ? _userRepository.GetList() : new();
-
     }
 }
