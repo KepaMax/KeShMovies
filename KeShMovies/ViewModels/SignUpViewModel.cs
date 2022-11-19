@@ -41,7 +41,7 @@ public class SignUpViewModel : BaseViewModel
 
     private void ExecuteLogInCommand(object? obj)
     {
-        throw new NotImplementedException();
+        
     }
 
     private void ExecuteSignUpCommand(object? parametr)
@@ -54,7 +54,7 @@ public class SignUpViewModel : BaseViewModel
         };
 
 
-        if(!IsValid())
+        if(!IsValidEmail())
         {
             MessageBox.Show($"Incorrect {nameof(Email)} Format");
             return;
@@ -111,7 +111,7 @@ public class SignUpViewModel : BaseViewModel
     }
 
 
-    private bool IsValid()
+    private bool IsValidEmail()
     {
         if (Email is null)
             return false;

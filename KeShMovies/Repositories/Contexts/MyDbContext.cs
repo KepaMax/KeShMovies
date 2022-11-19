@@ -26,10 +26,5 @@ public class MyDbContext : DbContext
         base.OnConfiguring(optionsBuilder);
     }
 
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        builder.Entity<List<string>>().HasNoKey();
-    }
-
     public DbSet<User>? Users { get; set; }
 }

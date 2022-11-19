@@ -24,8 +24,8 @@
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
-                    <MediaElement Source="/Views/Movie Logo.gif"
-                           Width="100" Height="100" LoadedBehavior="Play"/>
+                    <Image Source="/Views/Movie Logo.gif"
+                           Width="100" Height="100" />
                     <TextBlock Text="LOG IN"
                                Foreground="White"
                                Margin="5"
@@ -69,7 +69,8 @@
                              VerticalContentAlignment="Center"
                               />
                     <Button            
-                        Command="{Binding ContinueCommand}"
+                        Command="{Binding LogInCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}}"
                             BorderThickness="0"
                             Content="LOG IN"
                             Foreground="White"
