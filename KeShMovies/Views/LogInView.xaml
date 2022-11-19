@@ -107,14 +107,17 @@
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"/>
-                        <TextBlock Text="Sign Up Now" 
-                                   Style="{StaticResource LinkedStyle}"
+                        <TextBlock 
+                                   
                                Foreground="White"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                Cursor="Hand"
-                               Margin="8,0,0,0"/>
+                               Margin="8,0,0,0">
+<Hyperlink>Sign Up Now</Hyperlink>
+                        </TextBlock>
+                        
                     </StackPanel>
                 </StackPanel>
             </Grid>

@@ -159,14 +159,16 @@
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"/>
-                        <TextBlock Text="Log in" 
-                                   Style="{StaticResource LinkedStyle}"
+                        <TextBlock 
+                                   
                                Foreground="White"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                Cursor="Hand"
-                               Margin="8,0,0,0"/>
+                               Margin="8,0,0,0">
+                             <Hyperlink>Log In </Hyperlink>
+                        </TextBlock>
                     </StackPanel>
                 </StackPanel>
             </Grid>
