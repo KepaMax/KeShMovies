@@ -19,16 +19,20 @@
                     <GradientStop Color="Black" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Grid>
+            <Grid VerticalAlignment="Center">
                 <StackPanel Width="220"
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
                     <Image Source="/Views/Movie Logo.gif"
-                           Width="100" Height="100" />
+                           Width="100" Height="100">
+                        <Image.Clip>
+                            <EllipseGeometry RadiusX="50" RadiusY="50" Center="50 50"/>
+                        </Image.Clip>
+                    </Image>
                     <TextBlock Text="LOG IN"
                                Foreground="White"
-                               Margin="5"
+                               Margin="10"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
@@ -114,7 +118,9 @@
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                Cursor="Hand"
-                               Margin="8,0,0,0"/>
+                               Margin="8,0,0,0">
+                            <Hyperlink Command="{Binding GoSigUpCommand}">Sign Up Now</Hyperlink>
+                        </TextBlock>
                     </StackPanel>
                 </StackPanel>
             </Grid>

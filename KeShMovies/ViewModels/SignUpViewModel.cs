@@ -1,5 +1,6 @@
 ﻿using KeShMovies.Commands;
 using KeShMovies.Models;
+using KeShMovies.Navigation;
 using KeShMovies.Repositories;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,11 @@ namespace KeShMovies.ViewModels;
 public class SignUpViewModel : BaseViewModel
 {
     private readonly IUserRepository _userRepository;
+    private readonly NavigationStore _navigationStore;
     private readonly List<User>? _users;
 
     public ICommand SignUpCommand { get; set; }
-    public ICommand LogInCommand { get; set; }
+    public ICommand GoLogInCommand { get; set; }
 
     private static string usernameRegex = @"^(?=[a-zA-Z])[-\w.]{2,23}([a-zA-Z\d]|(?<![-.])_)$";
     private static string passwordRegex = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$";
@@ -29,19 +31,21 @@ public class SignUpViewModel : BaseViewModel
     public string Username { get; set; } = default!;
     public string Password { get; set; } = default!;
 
-    public SignUpViewModel(IUserRepository userRepository)
+    public SignUpViewModel(IUserRepository userRepository, NavigationStore navigationStore)
     {
+
         _userRepository = userRepository;
+        _navigationStore = navigationStore;
 
         _users = _userRepository.GetList() != null ? _userRepository.GetList() : new();
 
         SignUpCommand = new RelayCommand(ExecuteSignUpCommand, CanExecuteContinueCommand);
-        LogInCommand = new RelayCommand(ExecuteLogInCommand);
+        GoLogInCommand = new RelayCommand(ExecuteGoLogInCommandCommand);
     }
 
-    private void ExecuteLogInCommand(object? obj)
+    private void ExecuteGoLogInCommandCommand(object? obj)
     {
-        
+        _navigationStore.CurrentViewModel = new LogInViewModel(_userRepository, _navigationStore);
     }
 
     private void ExecuteSignUpCommand(object? parametr)

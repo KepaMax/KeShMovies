@@ -1,5 +1,6 @@
 ﻿using KeShMovies.Commands;
 using KeShMovies.Models;
+using KeShMovies.Navigation;
 using KeShMovies.Repositories;
 using System;
 using System.Collections.Generic;
@@ -16,22 +17,30 @@ namespace KeShMovies.ViewModels;
 public class LogInViewModel :BaseViewModel
 {
     private readonly IUserRepository _userRepository;
+    private readonly NavigationStore _navigationStore;
     private readonly List<User>? _users;
 
     private static string usernameRegex = @"^(?=[a-zA-Z])[-\w.]{2,23}([a-zA-Z\d]|(?<![-.])_)$";
     private static string passwordRegex = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$";
 
     public ICommand LogInCommand { get; set; }
+    public ICommand GoSigUpCommand { get; set; }
     public string UsernameOrEmail { get; set; } = default!;
     public string Password { get; set; } = default!;
 
-    public LogInViewModel(IUserRepository userRepository)
+    public LogInViewModel(IUserRepository userRepository, NavigationStore navigationStore)
     {
         _userRepository = userRepository;
+        _navigationStore = navigationStore;
         _users = _userRepository.GetList() != null ? _userRepository.GetList() : new();
 
         LogInCommand = new RelayCommand(ExecuteLogInCommand, CanExecuteLogInCommand);
+        GoSigUpCommand = new RelayCommand(ExecuteGoSigUpCommand);
+    }
 
+    private void ExecuteGoSigUpCommand(object? obj)
+    {
+        _navigationStore.CurrentViewModel = new SignUpViewModel(_userRepository,_navigationStore);
     }
 
     private void ExecuteLogInCommand(object? parametr)
