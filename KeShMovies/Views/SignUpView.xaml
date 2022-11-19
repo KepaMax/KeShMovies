@@ -120,7 +120,7 @@
                     </PasswordBox>-->
 
                     <Button            
-                        Command="{Binding ContinueCommand}"
+                        Command="{Binding SignUpCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}}"
                             BorderThickness="0"
                             Content="SIGN UP"

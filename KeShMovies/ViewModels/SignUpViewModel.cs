@@ -19,7 +19,7 @@ public class SignUpViewModel : BaseViewModel
     private readonly IUserRepository _userRepository;
     private readonly List<User>? _users;
 
-    public ICommand ContinueCommand { get; set; }
+    public ICommand SignUpCommand { get; set; }
     public ICommand LogInCommand { get; set; }
 
     private static string usernameRegex = @"^(?=[a-zA-Z])[-\w.]{2,23}([a-zA-Z\d]|(?<![-.])_)$";
@@ -35,7 +35,7 @@ public class SignUpViewModel : BaseViewModel
 
         _users = _userRepository.GetList() != null ? _userRepository.GetList() : new();
 
-        ContinueCommand = new RelayCommand(ExecuteContinueCommand, CanExecuteContinueCommand);
+        SignUpCommand = new RelayCommand(ExecuteSignUpCommand, CanExecuteContinueCommand);
         LogInCommand = new RelayCommand(ExecuteLogInCommand);
     }
 
@@ -44,7 +44,7 @@ public class SignUpViewModel : BaseViewModel
         throw new NotImplementedException();
     }
 
-    private void ExecuteContinueCommand(object? parametr)
+    private void ExecuteSignUpCommand(object? parametr)
     {
         var user = new User()
         {
@@ -106,6 +106,7 @@ public class SignUpViewModel : BaseViewModel
 
             return true;
         }
+
         return false;
     }
 
