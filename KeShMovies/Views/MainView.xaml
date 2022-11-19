@@ -6,7 +6,7 @@
         xmlns:Views="clr-namespace:KeShMovies.Views"
         xmlns:ViewModels="clr-namespace:KeShMovies.ViewModels"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800" Background="#191B1F">
+        Title="MainView" Height="550" Width="800" Background="#191B1F">
     
     <ContentControl Content="{Binding CurrentViewModel}">
         <ContentControl.Resources>

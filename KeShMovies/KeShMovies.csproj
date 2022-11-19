@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\KeSh Movies.gif" />
     <None Remove="Views\logo.png" />
+    <None Remove="Views\Movie Logo.gif" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +34,8 @@
 
   <ItemGroup>
     <Resource Include="StaticFiles\Images\logo.png" />
+    <Resource Include="Views\KeSh Movies.gif" />
+    <Resource Include="Views\Movie Logo.gif" />
   </ItemGroup>
 
   <ItemGroup>
