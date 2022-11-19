@@ -35,9 +35,8 @@
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
-                               HorizontalAlignment="Center"
-                               Margin="5"/>
-                    <TextBlock Text="Learning to code is useful no matter what your career ambitions are."
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Sono Sharingan Omae wa doko Made Mieteiru"
                                Foreground="LightGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -73,7 +72,7 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
                              VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
+                             Margin="0,5,0,10"
                              materialDesign:HintAssist.Hint="Email"
                              materialDesign:TextFieldAssist.UnderlineBrush="#181818"
                              materialDesign:HintAssist.Foreground="DarkGray"
@@ -88,14 +87,14 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
                              VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
+                             Margin="0,5,0,10"
                              materialDesign:HintAssist.Hint="Username"
                         Text="{Binding Username,UpdateSourceTrigger=PropertyChanged}"
                              materialDesign:TextFieldAssist.UnderlineBrush="#181818"
                              materialDesign:HintAssist.Foreground="DarkGray"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center" />
-                    
+
                     <usercontrols:BindablePasswordBox
                         FontSize="15"
                         Margin="0,5,0,0"
@@ -103,6 +102,7 @@
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
+                             materialDesign:HintAssist.HelperText="At least 8 characters"
                              VerticalContentAlignment="Center"
                               />
                     <!--<PasswordBox x:Name="txtPass"
@@ -121,6 +121,7 @@
 
                     <Button            
                         Command="{Binding ContinueCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}}"
                             BorderThickness="0"
                             Content="SIGN UP"
                             Foreground="White"
