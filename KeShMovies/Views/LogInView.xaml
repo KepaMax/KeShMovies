@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:usercontrols="clr-namespace:KeShMovies.UserControls"
-             xmlns:local="clr-namespace:KeShMovies.Views"
+             xmlns:local="clr-namespace:KeShMovies.Views" 
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="800">
     <Border CornerRadius="12">
@@ -108,14 +108,17 @@
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"/>
-                        <TextBlock Text="Sign Up Now" 
+                        <TextBlock
+                            
+                            Text="Sign Up Now" 
                                    Style="{StaticResource LinkedStyle}"
                                Foreground="White"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                Cursor="Hand"
-                               Margin="8,0,0,0"/>
+                               Margin="8,0,0,0">
+                        </TextBlock>
                     </StackPanel>
                 </StackPanel>
             </Grid>
