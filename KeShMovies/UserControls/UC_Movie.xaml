@@ -9,8 +9,11 @@
              mc:Ignorable="d" 
              Height="275" Width="225">
 
-    <Border Height="250" Width="200" CornerRadius="25" Background="AliceBlue">
-        
+    <Border Height="250" Width="200" CornerRadius="25" >
+        <Border.Background>
+            <ImageBrush Stretch="Fill"  ImageSource="{Binding Poster}"/>
+        </Border.Background>
+
         <Grid>
 
             <Grid.RowDefinitions>
@@ -18,7 +21,7 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <Image Stretch="UniformToFill" Grid.RowSpan="2" Source="{Binding Poster}"/>
+   
 
 
 
