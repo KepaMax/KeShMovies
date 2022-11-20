@@ -14,14 +14,11 @@ using System.Windows.Input;
 
 namespace KeShMovies.ViewModels;
 
-public class LogInViewModel :BaseViewModel
+public class LogInViewModel : BaseViewModel
 {
     private readonly IUserRepository _userRepository;
     private readonly NavigationStore _navigationStore;
     private readonly List<User>? _users;
-
-    private static string usernameRegex = @"^(?=[a-zA-Z])[-\w.]{2,23}([a-zA-Z\d]|(?<![-.])_)$";
-    private static string passwordRegex = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$";
 
     public ICommand LogInCommand { get; set; }
     public ICommand GoSigUpCommand { get; set; }
@@ -40,12 +37,12 @@ public class LogInViewModel :BaseViewModel
 
     private void ExecuteGoSigUpCommand(object? obj)
     {
-        _navigationStore.CurrentViewModel = new SignUpViewModel(_userRepository,_navigationStore);
+        _navigationStore.CurrentViewModel = new SignUpViewModel(_userRepository, _navigationStore);
     }
 
     private void ExecuteLogInCommand(object? parametr)
     {
-
+        MessageBox.Show(parametr.GetType().Name);
 
         User? user = null;
 
@@ -53,13 +50,16 @@ public class LogInViewModel :BaseViewModel
         {
             user = _users?.Find(u => u.Email == UsernameOrEmail);
 
-            if(user is not null  && user.Password==Password)
+            if (user is not null)
             {
-                MessageBox.Show("Fuck Yeah");
+                if (user.Password == Password)
+                {
+                    _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore);
+                    return;
+                }
+                MessageBox.Show("Password Don't Match");
                 return;
-
             }
-
             MessageBox.Show("Email Not Found");
             return;
         }
@@ -69,7 +69,12 @@ public class LogInViewModel :BaseViewModel
         user = _users?.Find(u => u.Username == UsernameOrEmail);
         if (user is not null && user.Password == Password)
         {
-            MessageBox.Show("Fuck Yeah");
+            if (user.Password == Password)
+            {
+                _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore);
+                return;
+            }
+            MessageBox.Show("Password Don't Match");
             return;
         }
 

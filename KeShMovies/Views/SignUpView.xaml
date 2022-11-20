@@ -42,7 +42,7 @@
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Sono Sharingan Omae wa doko Made Mieteiru"
+                    <TextBlock Text="Sono Sharingan Omae Wa Doko Made Mieteiru"
                                Foreground="LightGray"
                                FontSize="12"
                                FontWeight="Medium"
