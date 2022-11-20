@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Windows\**" />
+    <EmbeddedResource Remove="Views\Windows\**" />
+    <None Remove="Views\Windows\**" />
+    <Page Remove="Views\Windows\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Views\KeSh Movies.gif" />
     <None Remove="Views\logo.png" />
     <None Remove="Views\Movie Logo.gif" />
@@ -16,7 +23,6 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Services\" />
-    <Folder Include="Views\Windows\" />
   </ItemGroup>
 
   <ItemGroup>

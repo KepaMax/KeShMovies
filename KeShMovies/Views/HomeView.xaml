@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      xmlns:local="clr-namespace:KeShMovies.Views"
+      xmlns:local="clr-namespace:KeShMovies.Views" 
+      xmlns:customcontrol="clr-namespace:KeShMovies.CustomControl"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800">
 
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" MaxWidth="300"/>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="2*" MaxWidth="300"/>
         </Grid.ColumnDefinitions>
@@ -32,26 +32,12 @@
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
 
-            <TextBox
-                Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
-                BorderThickness="2"
-                BorderBrush="#35373D"
-                VerticalAlignment="Center"
-                Margin="10"
-                Padding="5"
-                Foreground="#35373D"
-                materialDesign:HintAssist.Hint="Name"
-                >
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="PreviewMouseDown">
-                        <i:InvokeCommandAction Command="{Binding TestCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TextBox}}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </TextBox>
-
+           
 
         </Grid>
 
-
+        <customcontrol:StretchedWrapPanel >
+            
+        </customcontrol:StretchedWrapPanel>
     </Grid>
 </UserControl>
