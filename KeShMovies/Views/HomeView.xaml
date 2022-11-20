@@ -7,6 +7,7 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:local="clr-namespace:KeShMovies.Views" 
       xmlns:customcontrol="clr-namespace:KeShMovies.CustomControl"
+      xmlns:userControl="clr-namespace:KeShMovies.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800">
 
@@ -32,12 +33,21 @@
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
 
-           
 
         </Grid>
 
-        <customcontrol:StretchedWrapPanel >
-            
-        </customcontrol:StretchedWrapPanel>
+        <WrapPanel>
+            <ItemsControl ItemsSource="{Binding Movies}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <userControl:UC_Movie 
+                            Title="{Binding Title}" 
+                            imdbRating="{Binding imdbRating}"
+                            Year="{Binding Year}"
+                            Poster="{Binding Poster}"></userControl:UC_Movie>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </WrapPanel>
     </Grid>
 </UserControl>

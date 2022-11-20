@@ -62,23 +62,23 @@ At Least 1 UpperCase";
         };
 
 
-        if(!IsValidEmail())
-        {
-            MessageBox.Show($"Incorrect {nameof(Email)} Format");
-            return;
-        }    
-
-        if(!Regex.IsMatch(Username, usernameRegex))
-        {
-            MessageBox.Show($"Incorrect {nameof(Username)} Format");
-            return;
-        }
-
-        if (!Regex.IsMatch(Password, passwordRegex))
-        {
-            MessageBox.Show($"Incorrect {nameof(Password)} Format");
-            return;
-        }
+        //if(!IsValidEmail())
+        //{
+        //    MessageBox.Show($"Incorrect {nameof(Email)} Format");
+        //    return;
+        //}    
+        //
+        //if(!Regex.IsMatch(Username, usernameRegex))
+        //{
+        //    MessageBox.Show($"Incorrect {nameof(Username)} Format");
+        //    return;
+        //}
+        //
+        //if (!Regex.IsMatch(Password, passwordRegex))
+        //{
+        //    MessageBox.Show($"Incorrect {nameof(Password)} Format");
+        //    return;
+        //}
 
         if (_users is not null)
         {
@@ -97,7 +97,8 @@ At Least 1 UpperCase";
             _users.Add(user);
             _userRepository.Add(user);
 
-
+            _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore);
+            return;
         }
 
     }

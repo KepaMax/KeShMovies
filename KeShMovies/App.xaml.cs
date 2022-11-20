@@ -10,6 +10,7 @@ using System.Windows;
 using KeShMovies.ViewModels;
 using KeShMovies.Navigation;
 using KeShMovies.Repositories;
+using KeShMovies.Models;
 
 namespace KeShMovies;
 
@@ -18,10 +19,12 @@ public partial class App : Application
     private void Application_Startup(object sender, StartupEventArgs e)
     {
         NavigationStore navigationStore = new();
+        User user = new();
 
         var builder = new ContainerBuilder();
 
         builder.RegisterInstance(navigationStore).SingleInstance();
+        builder.RegisterInstance(user).SingleInstance();
 
         builder.RegisterType<MainViewModel>();
         builder.RegisterType<HomeViewModel>();
@@ -32,7 +35,7 @@ public partial class App : Application
 
         var container = builder.Build();
 
-        navigationStore.CurrentViewModel = container.Resolve<LogInViewModel>();
+        navigationStore.CurrentViewModel = container.Resolve<HomeViewModel>();
 
         MainView mainView = new();
         mainView.DataContext= container.Resolve<MainViewModel>();
