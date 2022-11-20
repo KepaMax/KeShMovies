@@ -16,6 +16,7 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Services\" />
+    <Folder Include="Views\Windows\" />
   </ItemGroup>
 
   <ItemGroup>

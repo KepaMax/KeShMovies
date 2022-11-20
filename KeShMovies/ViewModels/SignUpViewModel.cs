@@ -19,6 +19,12 @@ public class SignUpViewModel : BaseViewModel
     private readonly NavigationStore _navigationStore;
     private readonly List<User>? _users;
 
+    public static string PasswordHelperText { get; set; } = @"At Least 8 Characters
+At Least 1 UpperCase
+At Least 1 Number";
+    public static string UsernameHelperText { get; set; } = @"At Least 3 Characters
+At Least 1 UpperCase";
+
     public ICommand SignUpCommand { get; set; }
     public ICommand GoLogInCommand { get; set; }
 

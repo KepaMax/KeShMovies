@@ -42,7 +42,6 @@ public class LogInViewModel : BaseViewModel
 
     private void ExecuteLogInCommand(object? parametr)
     {
-        MessageBox.Show(parametr.GetType().Name);
 
         User? user = null;
 

@@ -31,6 +31,7 @@
                             <EllipseGeometry RadiusX="50" RadiusY="50" Center="50 50"/>
                         </Image.Clip>
                     </Image>
+                    
                     <TextBlock Text="LOG IN"
                                Foreground="White"
                                Margin="10"
@@ -38,7 +39,8 @@
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Learning to code is useful no matter what your career ambitions are."
+
+                    <TextBlock Text="Ichibi Niibi Boku Wa Tobi!"
                                Foreground="LightGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -49,19 +51,19 @@
                     <TextBox
                         FontSize="15"
                         Text="{Binding UsernameOrEmail,UpdateSourceTrigger=PropertyChanged}"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
-                             materialDesign:HintAssist.Hint="Username / Email"
-                             materialDesign:TextFieldAssist.UnderlineBrush="#181818"
-                             materialDesign:HintAssist.Foreground="DarkGray"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Center" />
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"                            
+                        Foreground="White"
+                        CaretBrush="LightGray"
+                        BorderBrush="DarkGray"
+                        BorderThickness="0,0,0,2"
+                        VerticalContentAlignment="Center"
+                        Margin="0,5,0,0"
+                        materialDesign:HintAssist.Hint="Username / Email"
+                        materialDesign:TextFieldAssist.UnderlineBrush="#181818"
+                        materialDesign:HintAssist.Foreground="DarkGray"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Center" />
 
 
                     <usercontrols:BindablePasswordBox
@@ -71,26 +73,19 @@
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
-                             VerticalContentAlignment="Center"
-                              >
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="KeyDown">
-                                <i:InvokeCommandAction Command="{Binding LogInCommand}" PassEventArgsToCommand="True"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </usercontrols:BindablePasswordBox>
-                    
+                             VerticalContentAlignment="Center"/>
+
+
                     <Button            
                         Command="{Binding LogInCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}}"
-                            BorderThickness="0"
-                            Content="LOG IN"
-                            Foreground="White"
-                            FontSize="12"
-                            FontFamily="Montserrat"
-                            Cursor="Hand"                           
-                            Margin="0,50,0,0"
-                           >
+                        BorderThickness="0"
+                        Content="LOG IN"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"                           
+                        Margin="0,50,0,0">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#121212"/>

@@ -35,6 +35,7 @@
                             <EllipseGeometry RadiusX="50" RadiusY="50" Center="50 50"/>
                         </Image.Clip>
                     </Image>
+                    
                     <TextBlock Text="SIGN UP"
                                Foreground="White"
                                Margin="10"
@@ -42,6 +43,7 @@
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
+                    
                     <TextBlock Text="Sono Sharingan Omae Wa Doko Made Mieteiru"
                                Foreground="LightGray"
                                FontSize="12"
@@ -50,81 +52,54 @@
                                TextWrapping="Wrap"
                                TextAlignment="Center"
                                Margin="0,5,0,0"/>
-                    <!--<TextBox x:Name="txtUser"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
-                             Padding="20,0,0,0">
-                        <TextBox.Background>
-                            <ImageBrush ImageSource="/StaticFiles/Images/logo.png"
-                                        Stretch="None"
-                                        AlignmentX="Left"/>
-                        </TextBox.Background>
-                    </TextBox>-->
+               
                     <TextBox
                         FontSize="15"
                         Text="{Binding Email,UpdateSourceTrigger=PropertyChanged}"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,0,10"
-                             materialDesign:HintAssist.Hint="Email"
-                             materialDesign:TextFieldAssist.UnderlineBrush="#181818"
-                             materialDesign:HintAssist.Foreground="DarkGray"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Center" />
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"                            
+                        Foreground="White"
+                        CaretBrush="LightGray"
+                        BorderBrush="DarkGray"
+                        BorderThickness="0,0,0,2"
+                        VerticalContentAlignment="Center"
+                        Margin="0,5,0,10"
+                        materialDesign:HintAssist.Hint="Email"
+                        materialDesign:TextFieldAssist.UnderlineBrush="#181818"
+                        materialDesign:HintAssist.Foreground="DarkGray"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Center" />
+                    
                     <TextBox
+                        ToolTip="{Binding UsernameHelperText}"
                         FontSize="15"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,0,10"
-                             materialDesign:HintAssist.Hint="Username"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"                            
+                        Foreground="White"
+                        CaretBrush="LightGray"
+                        BorderBrush="DarkGray"
+                        BorderThickness="0,0,0,2"
+                        VerticalContentAlignment="Center"
+                        Margin="0,5,0,10"
+                        materialDesign:HintAssist.Hint="Username"
                         Text="{Binding Username,UpdateSourceTrigger=PropertyChanged}"
-                             materialDesign:TextFieldAssist.UnderlineBrush="#181818"
-                             materialDesign:HintAssist.Foreground="DarkGray"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Center" />
+                        materialDesign:TextFieldAssist.UnderlineBrush="#181818"
+                        materialDesign:HintAssist.Foreground="DarkGray"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Center" />
 
                     <usercontrols:BindablePasswordBox
+                        ToolTip="{Binding PasswordHelperText}"
                         FontSize="15"
                         Margin="0,5,0,0"
                         Password="{Binding Password}"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
-                             materialDesign:HintAssist.HelperText="At least 8 characters"
-                             VerticalContentAlignment="Center"
-                              />
-                    <!--<PasswordBox x:Name="txtPass"
-                             FontSize="13"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             CaretBrush="LightGray"
-                             BorderBrush="DarkGray"
-                             BorderThickness="0,0,0,2"
-                             Height="28"
-                             VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
-                             Padding="20,0,0,0">
-                    </PasswordBox>-->
+                             VerticalContentAlignment="Center">
 
+                    </usercontrols:BindablePasswordBox>
+                    
                     <Button            
                         Command="{Binding SignUpCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}}"
