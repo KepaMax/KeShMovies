@@ -1,7 +1,9 @@
-﻿using KeShMovies.Commands;
+﻿using Autofac;
+using KeShMovies.Commands;
 using KeShMovies.Models;
 using KeShMovies.Navigation;
 using KeShMovies.Services;
+using System;
 using System.Collections.ObjectModel;
 using System.Text.Json;
 using System.Windows.Input;
@@ -13,7 +15,8 @@ public class HomeViewModel : BaseViewModel
     private readonly NavigationStore _navigationStore;
     public ObservableCollection<Movie> Movies { get; set; }
     public ICommand SearchCommand { get; set; }
-
+    public ICommand LogOutCommand { get; set; }
+    
     public string? SearchText { get; set; }
     public User CurrentUser { get; set; }
 
@@ -24,6 +27,12 @@ public class HomeViewModel : BaseViewModel
         Movies = new();
 
         SearchCommand = new RelayCommand(ExecuteSearchCommand, CanExecuteSearchCommand);
+        LogOutCommand = new RelayCommand(ExecuteLogOutCommand);
+    }
+
+    private void ExecuteLogOutCommand(object? parametr)
+    {
+        _navigationStore.CurrentViewModel = App.Container?.Resolve<LogInViewModel>();
     }
 
     private bool CanExecuteSearchCommand(object? parametr) => !string.IsNullOrWhiteSpace(SearchText);

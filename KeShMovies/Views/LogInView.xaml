@@ -7,8 +7,12 @@
              xmlns:usercontrols="clr-namespace:KeShMovies.UserControls"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:KeShMovies.Views" 
+             xmlns:h="clr-namespace:KeShMovies.HelperElements" 
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="800">
+    
+    
+    
     <Border CornerRadius="12">
 
         <Border CornerRadius="10"                    
@@ -25,8 +29,9 @@
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
-                    <Image Source="/Views/Movie Logo.gif"
-                           Width="100" Height="100">
+                    <Image 
+                        Source="/Views/Movie Logo.gif"
+                        Width="100" Height="100">
                         <Image.Clip>
                             <EllipseGeometry RadiusX="50" RadiusY="50" Center="50 50"/>
                         </Image.Clip>
@@ -63,11 +68,9 @@
                         materialDesign:TextFieldAssist.UnderlineBrush="#181818"
                         materialDesign:HintAssist.Foreground="DarkGray"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        VerticalAlignment="Center">
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Enter" Command="{Binding LogInCommand}" />
-                        </TextBox.InputBindings>
-                    </TextBox>
+                        VerticalAlignment="Center"
+                        h:EnterKeyHelpers.EnterKeyCommand="{Binding LogInCommand}"/>
+
 
 
                     <usercontrols:BindablePasswordBox
@@ -77,11 +80,9 @@
                         FontWeight="Medium"
                         FontFamily="Montserrat"                            
                         Foreground="White"
-                        VerticalContentAlignment="Center">
-                        <usercontrols:BindablePasswordBox.InputBindings>
-                            <KeyBinding Key="Enter" Command="{Binding LogInCommand}" />
-                        </usercontrols:BindablePasswordBox.InputBindings>
-                    </usercontrols:BindablePasswordBox>
+                        VerticalContentAlignment="Center"
+                        h:EnterKeyHelpers.EnterKeyCommand="{Binding LogInCommand}"/>
+
 
 
                     <Button            

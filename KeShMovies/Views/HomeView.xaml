@@ -9,6 +9,7 @@
       xmlns:local="clr-namespace:KeShMovies.Views" 
       xmlns:customcontrol="clr-namespace:KeShMovies.CustomControl"
       xmlns:userControl="clr-namespace:KeShMovies.UserControls"
+      xmlns:h="clr-namespace:KeShMovies.HelperElements"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800">
     <Border
@@ -57,12 +58,12 @@
                 <DockPanel>
                     <Menu Foreground="WhiteSmoke" DockPanel.Dock="Right" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <MenuItem
-                            Background="#181818" Header="_Profile">
+                            Background="#181818" Header="_Main">
                             <MenuItem Header="Profile" Icon="{materialDesign:PackIcon Kind=EmojiManProfile}"></MenuItem>
                             <MenuItem  Header="Favorites" Icon="{materialDesign:PackIcon Kind=Heart}" />
                             <MenuItem Header="Watch List" Icon="{materialDesign:PackIcon Kind=WatchLater}" />
                             <Separator />
-                            <MenuItem Header="Log Out" Icon="{materialDesign:PackIcon Kind=ExitToApp}"/>
+                            <MenuItem Header="Log Out" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Command="{Binding LogOutCommand}"/>
                         </MenuItem>
 
                     </Menu>
@@ -90,11 +91,9 @@
                                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                 BorderThickness="0"
                                 MinWidth="200"
-                                VerticalAlignment="Center">
-                                <TextBox.InputBindings>
-                                    <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
-                                </TextBox.InputBindings>
-                            </TextBox>
+                                VerticalAlignment="Center"
+                                h:EnterKeyHelpers.EnterKeyCommand="{Binding SearchCommand}"/>
+
 
                             <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}" Command="{Binding SearchCommand}">
                                 <materialDesign:PackIcon Kind="Search" Opacity=".56" />

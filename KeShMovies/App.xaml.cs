@@ -16,6 +16,8 @@ namespace KeShMovies;
 
 public partial class App : Application
 {
+    public static IContainer? Container { get; private set; }
+
     private void Application_Startup(object sender, StartupEventArgs e)
     {
         NavigationStore navigationStore = new();
@@ -33,12 +35,12 @@ public partial class App : Application
         builder.RegisterType<EfUserRepository>().As<IUserRepository>();
         
 
-        var container = builder.Build();
+        Container = builder.Build();
 
-        navigationStore.CurrentViewModel = container.Resolve<HomeViewModel>();
+        navigationStore.CurrentViewModel = Container.Resolve<HomeViewModel>();
 
         MainView mainView = new();
-        mainView.DataContext= container.Resolve<MainViewModel>();
+        mainView.DataContext= Container.Resolve<MainViewModel>();
 
 
 

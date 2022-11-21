@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:local="clr-namespace:KeShMovies.Views" 
-             xmlns:viewmodels="clr-namespace:KeShMovies.ViewModels" 
+             xmlns:h="clr-namespace:KeShMovies.HelperElements" 
              xmlns:usercontrols="clr-namespace:KeShMovies.UserControls"
              xmlns:gif="http://wpfanimatedgif.codeplex.com"
              mc:Ignorable="d" 
@@ -68,11 +68,9 @@
                         materialDesign:TextFieldAssist.UnderlineBrush="#181818"
                         materialDesign:HintAssist.Foreground="DarkGray"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        VerticalAlignment="Center">
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Enter" Command="{Binding SignUpCommand}" />
-                        </TextBox.InputBindings>
-                    </TextBox>
+                        VerticalAlignment="Center"
+                        h:EnterKeyHelpers.EnterKeyCommand="{Binding SignUpCommand}"/>
+
 
                     <TextBox
                         ToolTip="{Binding UsernameHelperText}"
@@ -90,26 +88,21 @@
                         materialDesign:TextFieldAssist.UnderlineBrush="#181818"
                         materialDesign:HintAssist.Foreground="DarkGray"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        VerticalAlignment="Center">
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Enter" Command="{Binding SignUpCommand}" />
-                        </TextBox.InputBindings>
-                    </TextBox>
+                        VerticalAlignment="Center"
+                        h:EnterKeyHelpers.EnterKeyCommand="{Binding SignUpCommand}"/>
 
                     <usercontrols:BindablePasswordBox
                         ToolTip="{Binding PasswordHelperText}"
                         FontSize="15"
                         Margin="0,5,0,0"
                         Password="{Binding Password}"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             VerticalContentAlignment="Center">
-                        <usercontrols:BindablePasswordBox.InputBindings>
-                            <KeyBinding Key="Enter" Command="{Binding SignUpCommand}" />
-                        </usercontrols:BindablePasswordBox.InputBindings>
-                    </usercontrols:BindablePasswordBox>
-                    
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"                            
+                        Foreground="White"
+                        VerticalContentAlignment="Center"
+                        h:EnterKeyHelpers.EnterKeyCommand="{Binding SignUpCommand}"/>
+
+
                     <Button            
                         Command="{Binding SignUpCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}}"
