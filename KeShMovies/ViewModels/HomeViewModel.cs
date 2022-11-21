@@ -43,7 +43,7 @@ public class HomeViewModel : BaseViewModel
 
         var movies = JsonSerializer.Deserialize<MovieCollection>(jsonStr);
 
-        if (movies is not null)
+        if (movies.Search is not null)
             foreach (var result in movies.Search)
             {
                 var movieJson = await OmdbService.GetConcreteMovie(result.imdbID);

@@ -27,12 +27,35 @@
             
             
             <Grid>
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <WrapPanel Orientation="Horizontal" Grid.Row="1">
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl  ItemsSource="{Binding Movies}">
+                        <ItemsControl.ItemsPanel >
+                            <ItemsPanelTemplate>
+                                <WrapPanel ItemWidth="225" ItemHeight="275"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <userControl:UC_Movie 
+                                Title="{Binding Title}" 
+                                imdbRating="{Binding imdbRating}"
+                                Year="{Binding Year}"
+                                Poster="{Binding Poster}">
+                                </userControl:UC_Movie>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                
+               
+
+                <!--<WrapPanel Orientation="Horizontal" Grid.Row="1">
                     <ItemsControl ItemsSource="{Binding Movies}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -45,7 +68,7 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                </WrapPanel>
+                </WrapPanel>-->
 
                 <DockPanel>
                     <Menu Foreground="WhiteSmoke" DockPanel.Dock="Right" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
