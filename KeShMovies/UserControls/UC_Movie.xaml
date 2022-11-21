@@ -9,9 +9,9 @@
              mc:Ignorable="d" 
              Height="275" Width="225">
 
-    <Border Height="250" Width="200" CornerRadius="25" >
+    <Border Height="250" Width="200" CornerRadius="20" >
         <Border.Background>
-            <ImageBrush Stretch="Fill"  ImageSource="{Binding Poster}"/>
+            <ImageBrush Stretch="UniformToFill"  ImageSource="{Binding Poster}"/>
         </Border.Background>
 
         <Grid>
