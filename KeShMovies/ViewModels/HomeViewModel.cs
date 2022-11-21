@@ -2,16 +2,8 @@
 using KeShMovies.Models;
 using KeShMovies.Navigation;
 using KeShMovies.Services;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace KeShMovies.ViewModels;

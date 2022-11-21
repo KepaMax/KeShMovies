@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
       xmlns:local="clr-namespace:KeShMovies.Views" 
       xmlns:customcontrol="clr-namespace:KeShMovies.CustomControl"
       xmlns:userControl="clr-namespace:KeShMovies.UserControls"
@@ -106,7 +107,11 @@
                                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                 BorderThickness="0"
                                 MinWidth="200"
-                                VerticalAlignment="Center" />
+                                VerticalAlignment="Center">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
+                                </TextBox.InputBindings>
+                            </TextBox>
 
                             <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}" Command="{Binding SearchCommand}">
                                 <materialDesign:PackIcon Kind="Search" Opacity=".56" />
