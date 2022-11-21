@@ -14,98 +14,86 @@
         CornerRadius="10"                    
             BorderThickness="2"
             Opacity="0.95">
+
         <Border.Background>
             <LinearGradientBrush StartPoint="1,1" EndPoint="1,0">
                 <GradientStop Color="#8E0E00" Offset="0"/>
                 <GradientStop Color="Black" Offset="1"/>
             </LinearGradientBrush>
         </Border.Background>
-        <Grid>
-
-
 
         <Grid>
-            <Grid.RowDefinitions>
+
+            
+            
+            <Grid>
+                <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
+                <WrapPanel Orientation="Horizontal" Grid.Row="1">
+                    <ItemsControl ItemsSource="{Binding Movies}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <userControl:UC_Movie 
+                                Title="{Binding Title}" 
+                                imdbRating="{Binding imdbRating}"
+                                Year="{Binding Year}"
+                                Poster="{Binding Poster}">
+                                </userControl:UC_Movie>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </WrapPanel>
 
                 <DockPanel>
                     <Menu Foreground="WhiteSmoke" DockPanel.Dock="Right" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <MenuItem
-                            Background="#181818"
-    Header="_Profile">
-                            <MenuItem
-      Header="Profile"
-      Icon="{materialDesign:PackIcon Kind=EmojiManProfile}"></MenuItem>
-                            <MenuItem
-      Header="Favorites" Icon="{materialDesign:PackIcon Kind=Heart}" />
-                            <MenuItem
-      Header="Watch List"
-      InputGestureText="Ctrl+E"
-      Icon="{materialDesign:PackIcon Kind=WatchLater}" />
+                            Background="#181818" Header="_Profile">
+                            <MenuItem Header="Profile" Icon="{materialDesign:PackIcon Kind=EmojiManProfile}"></MenuItem>
+                            <MenuItem  Header="Favorites" Icon="{materialDesign:PackIcon Kind=Heart}" />
+                            <MenuItem Header="Watch List" Icon="{materialDesign:PackIcon Kind=WatchLater}" />
                             <Separator />
-                            <MenuItem
-      Header="Log Out" 
-        Icon="{materialDesign:PackIcon Kind=ExitToApp}"/>
-                           
-                               
+                            <MenuItem Header="Log Out" Icon="{materialDesign:PackIcon Kind=ExitToApp}"/>
                         </MenuItem>
-                       
-                    </Menu>
-                    <materialDesign:ColorZone
-                VerticalAlignment="Center"
-                
-        Mode="Standard"
-        Padding="8 4 8 4"
-        CornerRadius="2"
-        Panel.ZIndex="1"
-                Height="35"
-        Margin="16 5 16 5"
-        materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-              Width="*" />
-                        <ColumnDefinition
-              Width="Auto" />
-                    </Grid.ColumnDefinitions>
-     
-                    <TextBox
-         
-            Margin="8 0 0 0"
-            materialDesign:HintAssist.Hint="Build a search bar"
-            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-            BorderThickness="0"
-            MinWidth="200"
-            VerticalAlignment="Center" />
-                    <Button Grid.Column="1"
-            Style="{StaticResource MaterialDesignToolButton}">
-                        <materialDesign:PackIcon
-              Kind="Search"
-              Opacity=".56" />
-                    </Button>
-                </Grid>
-            </materialDesign:ColorZone >
-                </DockPanel>
-        </Grid>
 
- 
-         
-            <!--<WrapPanel>
-            <ItemsControl ItemsSource="{Binding Movies}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <userControl:UC_Movie 
-                            Title="{Binding Title}" 
-                            imdbRating="{Binding imdbRating}"
-                            Year="{Binding Year}"
-                            Poster="{Binding Poster}"></userControl:UC_Movie>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </WrapPanel>-->
-    </Grid>
+                    </Menu>
+
+                    <materialDesign:ColorZone
+                         VerticalAlignment="Center"
+                         Mode="Standard"
+                         Padding="8 4 8 4"
+                         CornerRadius="2"
+                         Panel.ZIndex="1"
+                         Height="35"
+                         Margin="16 5 16 5"
+                         materialDesign:ElevationAssist.Elevation="Dp6">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox
+                                Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
+                                Margin="8 0 0 0"
+                                materialDesign:HintAssist.Hint="Search"
+                                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                BorderThickness="0"
+                                MinWidth="200"
+                                VerticalAlignment="Center" />
+
+                            <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}" Command="{Binding SearchCommand}">
+                                <materialDesign:PackIcon Kind="Search" Opacity=".56" />
+                            </Button>
+
+                        </Grid>
+                    </materialDesign:ColorZone >
+                </DockPanel>
+            </Grid>
+
+        </Grid>
     </Border>
 </UserControl>

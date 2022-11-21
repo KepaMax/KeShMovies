@@ -20,13 +20,15 @@ public static class OmdbService
     public static async Task<string> GetAllMoviesByTitle(string title)
     {
         string url = $"http://www.omdbapi.com/?apikey={_key}&s={title}";
-        return await _client.GetStringAsync(url);
+        var task = await _client.GetStringAsync(url);
+        return task; 
     }
 
-    public static string GetMovieByTitle(string title)
+    public static async Task<string> GetConcreteMovie(string imdbId)
     {
-        string url = $"http://www.omdbapi.com/?apikey={_key}&t={title}";
-        return _client.GetStringAsync(url).Result;
+        string url = $"http://www.omdbapi.com/?apikey={_key}&i={imdbId}";
+        var task = await _client.GetStringAsync(url);
+        return task;
     }
 
 }
