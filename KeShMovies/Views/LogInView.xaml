@@ -63,17 +63,25 @@
                         materialDesign:TextFieldAssist.UnderlineBrush="#181818"
                         materialDesign:HintAssist.Foreground="DarkGray"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding LogInCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
 
 
                     <usercontrols:BindablePasswordBox
                         FontSize="15"
                         Margin="0,5,0,0"
                         Password="{Binding Password}"
-                             FontWeight="Medium"
-                             FontFamily="Montserrat"                            
-                             Foreground="White"
-                             VerticalContentAlignment="Center"/>
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"                            
+                        Foreground="White"
+                        VerticalContentAlignment="Center">
+                        <usercontrols:BindablePasswordBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding LogInCommand}" />
+                        </usercontrols:BindablePasswordBox.InputBindings>
+                    </usercontrols:BindablePasswordBox>
 
 
                     <Button            

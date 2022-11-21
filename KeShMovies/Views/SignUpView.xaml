@@ -52,7 +52,7 @@
                                TextWrapping="Wrap"
                                TextAlignment="Center"
                                Margin="0,5,0,0"/>
-               
+
                     <TextBox
                         FontSize="15"
                         Text="{Binding Email,UpdateSourceTrigger=PropertyChanged}"
@@ -68,8 +68,12 @@
                         materialDesign:TextFieldAssist.UnderlineBrush="#181818"
                         materialDesign:HintAssist.Foreground="DarkGray"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        VerticalAlignment="Center" />
-                    
+                        VerticalAlignment="Center">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding SignUpCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
+
                     <TextBox
                         ToolTip="{Binding UsernameHelperText}"
                         FontSize="15"
@@ -86,7 +90,11 @@
                         materialDesign:TextFieldAssist.UnderlineBrush="#181818"
                         materialDesign:HintAssist.Foreground="DarkGray"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding SignUpCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
 
                     <usercontrols:BindablePasswordBox
                         ToolTip="{Binding PasswordHelperText}"
@@ -97,20 +105,21 @@
                              FontFamily="Montserrat"                            
                              Foreground="White"
                              VerticalContentAlignment="Center">
-
+                        <usercontrols:BindablePasswordBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding SignUpCommand}" />
+                        </usercontrols:BindablePasswordBox.InputBindings>
                     </usercontrols:BindablePasswordBox>
                     
                     <Button            
                         Command="{Binding SignUpCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}}"
-                            BorderThickness="0"
-                            Content="SIGN UP"
-                            Foreground="White"
-                            FontSize="12"
-                            FontFamily="Montserrat"
-                            Cursor="Hand"                           
-                            Margin="0,50,0,0"
-                           >
+                        BorderThickness="0"
+                        Content="SIGN UP"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"                           
+                        Margin="0,50,0,0">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#121212"/>
