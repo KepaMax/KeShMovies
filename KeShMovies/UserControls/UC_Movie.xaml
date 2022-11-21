@@ -35,35 +35,22 @@
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-
+                
                 <ToggleButton
                     Width="34"
                     Height="34"
                     Grid.Column="1"
-                    HorizontalAlignment="Left"
-                    Margin="7 0 0 0"
-                    Foreground="WhiteSmoke"
-                    Background="#820000"
-                    Content="+"
-                    Style="{StaticResource MaterialDesignActionLightToggleButton}"
-                    IsChecked="True"
-                    ToolTip="MaterialDesignActionLightToggleButton" />
-
-                <ToggleButton
-                    Width="34"
-                    Height="34"
-                    Grid.Column="1"
-                    HorizontalAlignment="Right"
-                    Margin="0 0 7 0"
+                    HorizontalAlignment="Center"
+                    
                     Foreground="WhiteSmoke"
                     Content="{materialDesign:PackIcon Kind=Heart, Size=21}"
                     Background="#820000"
                     Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                     ToolTip="MaterialDesignFlatPrimaryToggleButton"
-                    IsChecked="True" />
+                    IsChecked="False" />
 
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock TextWrapping="Wrap" Margin="3 0 0 0" Foreground="WhiteSmoke" FontSize="14" Text="{Binding Title}"></TextBlock>
