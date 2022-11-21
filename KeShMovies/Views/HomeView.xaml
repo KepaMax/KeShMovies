@@ -34,7 +34,7 @@
                 </Grid.RowDefinitions>
 
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                    <ItemsControl  ItemsSource="{Binding Movies}">
+                    <ItemsControl ItemsSource="{Binding Movies}">
                         <ItemsControl.ItemsPanel >
                             <ItemsPanelTemplate>
                                 <WrapPanel ItemWidth="225" ItemHeight="275"/>
