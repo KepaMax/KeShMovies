@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="UserControls\image_error_full.png" />
     <None Remove="Views\Adsız tasarım.png" />
     <None Remove="Views\denise-jans-OaVJQZ-nFD0-unsplash.jpg" />
     <None Remove="Views\KeSh Movies.gif" />

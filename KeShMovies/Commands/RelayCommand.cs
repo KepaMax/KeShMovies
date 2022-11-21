@@ -13,6 +13,7 @@ public class RelayCommand : ICommand
 
     private readonly Action<object?> _execute;
     private readonly Predicate<object?>? _canExecute;
+    private ICommand? addToFavoritesCommand;
 
     public RelayCommand(Action<object?> execute, Predicate<object?>? canExecute = null)
     {
@@ -20,6 +21,11 @@ public class RelayCommand : ICommand
 
         _execute = execute;
         _canExecute = canExecute;
+    }
+
+    public RelayCommand(ICommand? addToFavoritesCommand)
+    {
+        this.addToFavoritesCommand = addToFavoritesCommand;
     }
 
     public bool CanExecute(object? parameter) => _canExecute is null || _canExecute.Invoke(parameter);
