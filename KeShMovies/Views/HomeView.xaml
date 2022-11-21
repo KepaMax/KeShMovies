@@ -18,10 +18,10 @@
             Opacity="0.95">
 
         <Border.Background>
-            <LinearGradientBrush StartPoint="1,1" EndPoint="1,0">
+            <RadialGradientBrush>
                 <GradientStop Color="#8E0E00" Offset="0"/>
                 <GradientStop Color="Black" Offset="1"/>
-            </LinearGradientBrush>
+            </RadialGradientBrush>
         </Border.Background>
 
         <Grid>
