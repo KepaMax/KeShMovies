@@ -15,7 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Views\Adsız tasarım.png" />
     <None Remove="Views\KeSh Movies.gif" />
+    <None Remove="Views\KeSh.gif" />
     <None Remove="Views\logo.png" />
     <None Remove="Views\Movie Logo.gif" />
   </ItemGroup>
@@ -41,7 +43,9 @@
 
   <ItemGroup>
     <Resource Include="StaticFiles\Images\logo.png" />
+    <Resource Include="Views\Adsız tasarım.png" />
     <Resource Include="Views\KeSh Movies.gif" />
+    <Resource Include="Views\KeSh.gif" />
     <Resource Include="Views\Movie Logo.gif" />
   </ItemGroup>
 
