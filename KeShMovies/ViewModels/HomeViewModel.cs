@@ -6,6 +6,7 @@ using KeShMovies.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Text.Json;
+using System.Windows;
 using System.Windows.Input;
 
 namespace KeShMovies.ViewModels;
@@ -16,7 +17,8 @@ public class HomeViewModel : BaseViewModel
     public ObservableCollection<Movie> Movies { get; set; }
     public ICommand SearchCommand { get; set; }
     public ICommand LogOutCommand { get; set; }
-    
+    public ICommand AddToFavoritesCommand { get; set; }
+
     public string? SearchText { get; set; }
     public User CurrentUser { get; set; }
 
@@ -28,12 +30,12 @@ public class HomeViewModel : BaseViewModel
 
         SearchCommand = new RelayCommand(ExecuteSearchCommand, CanExecuteSearchCommand);
         LogOutCommand = new RelayCommand(ExecuteLogOutCommand);
+        AddToFavoritesCommand = new RelayCommand(ExecuteAddToFavoritesCommand);
     }
 
-    private void ExecuteLogOutCommand(object? parametr)
-    {
-        _navigationStore.CurrentViewModel = App.Container?.Resolve<LogInViewModel>();
-    }
+    private void ExecuteLogOutCommand(object? parametr) => _navigationStore.CurrentViewModel = App.Container?.Resolve<LogInViewModel>(); 
+
+    private void ExecuteAddToFavoritesCommand(object? parametr) => MessageBox.Show("Hello Bro");
 
     private bool CanExecuteSearchCommand(object? parametr) => !string.IsNullOrWhiteSpace(SearchText);
 
@@ -56,7 +58,7 @@ public class HomeViewModel : BaseViewModel
                     Movies.Add(movie);
             }
         }
-            
+
 
     }
 }

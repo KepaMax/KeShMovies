@@ -19,7 +19,8 @@ namespace KeShMovies.UserControls;
 
 public partial class UC_Movie : UserControl
 {
-
+    public event EventHandler<EventArgs>? AddToFavorites;
+    public bool IsFavorite { get; set; } = false;
 
     public string Poster
     {
@@ -27,7 +28,6 @@ public partial class UC_Movie : UserControl
         set { SetValue(PosterProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for Poster.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty PosterProperty =
         DependencyProperty.Register("Poster", typeof(string), typeof(UC_Movie));
 
@@ -39,7 +39,6 @@ public partial class UC_Movie : UserControl
         set { SetValue(TitleProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty TitleProperty =
         DependencyProperty.Register("Title", typeof(string), typeof(UC_Movie));
 
@@ -52,7 +51,6 @@ public partial class UC_Movie : UserControl
         set { SetValue(imdbRatingProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for ImdbRating.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty imdbRatingProperty =
         DependencyProperty.Register("imdbRating", typeof(string), typeof(UC_Movie));
 
@@ -64,7 +62,6 @@ public partial class UC_Movie : UserControl
         set { SetValue(YearProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for Year.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty YearProperty =
         DependencyProperty.Register("Year", typeof(string), typeof(UC_Movie));
 
@@ -73,5 +70,8 @@ public partial class UC_Movie : UserControl
         InitializeComponent();
     }
 
-
+    private void ToggleButton_Click(object sender, RoutedEventArgs e)
+    {
+        AddToFavorites?.Invoke(this, EventArgs.Empty);
+    }
 }

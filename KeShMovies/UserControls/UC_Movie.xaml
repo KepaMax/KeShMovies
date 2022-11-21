@@ -52,8 +52,9 @@
                     Content="{materialDesign:PackIcon Kind=Heart, Size=21}"
                     Background="#820000"
                     Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-                    ToolTip="MaterialDesignFlatPrimaryToggleButton"
-                    IsChecked="False" />
+                    ToolTip="Add To Favorites"
+                    IsChecked="False"
+                    Click="ToggleButton_Click"/>
 
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock TextWrapping="Wrap" Margin="3 0 0 0" Foreground="WhiteSmoke" FontSize="14" Text="{Binding Title}"></TextBlock>

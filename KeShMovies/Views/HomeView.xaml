@@ -7,7 +7,9 @@
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
       xmlns:local="clr-namespace:KeShMovies.Views" 
+      xmlns:viewModels="clr-namespace:KeShMovies.ViewModels" 
       xmlns:customcontrol="clr-namespace:KeShMovies.CustomControl"
+      xmlns:dvxcc="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
       xmlns:userControl="clr-namespace:KeShMovies.UserControls"
       xmlns:h="clr-namespace:KeShMovies.HelperElements"
       mc:Ignorable="d" 
@@ -25,11 +27,8 @@
         </Border.Background>
 
         <Grid>
-
-            
-            
             <Grid>
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
@@ -45,16 +44,19 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <userControl:UC_Movie 
-                                Title="{Binding Title}" 
-                                imdbRating="{Binding imdbRating}"
-                                Year="{Binding Year}"
-                                Poster="{Binding Poster}">
+                                    Title="{Binding Title}" 
+                                    imdbRating="{Binding imdbRating}"
+                                    Year="{Binding Year}"
+                                    Poster="{Binding Poster}">
+                                    <dvxcc:Interaction.Behaviors>
+                                        <dvxcc:EventToCommand EventName="AddToFavorites" Command="{Binding DataContext.AddToFavoritesCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}} }"></dvxcc:EventToCommand>
+                                    </dvxcc:Interaction.Behaviors>
                                 </userControl:UC_Movie>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
-                
+
                 <DockPanel>
                     <Menu Foreground="WhiteSmoke" DockPanel.Dock="Right" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <MenuItem
