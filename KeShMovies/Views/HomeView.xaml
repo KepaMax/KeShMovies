@@ -36,11 +36,10 @@
                     <GradientStop Color="#8E0E00" Offset="3"/>
                 </LinearGradientBrush>
             </materialDesign:Card.Background>
-            <Grid>
 
-            
-            
-        <Grid>
+
+
+            <Grid>
             <Grid>
 
                 <Grid.RowDefinitions>
@@ -63,7 +62,7 @@
                                     Year="{Binding Year}"
                                     Poster="{Binding Poster}">
                                     <dvxcc:Interaction.Behaviors>
-                                        <dvxcc:EventToCommand EventName="AddToFavorites" Command="{Binding DataContext.AddToFavoritesCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}} }"></dvxcc:EventToCommand>
+                                        <dvxcc:EventToCommand EventName="AddToFavorites" Command="{Binding DataContext.AddToFavoritesCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" ></dvxcc:EventToCommand>
                                     </dvxcc:Interaction.Behaviors>
                                 </userControl:UC_Movie>
                             </DataTemplate>
