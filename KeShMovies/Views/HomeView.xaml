@@ -36,54 +36,56 @@
                     <GradientStop Color="#8E0E00" Offset="3"/>
                 </LinearGradientBrush>
             </materialDesign:Card.Background>
+            
 
 
-
+                <Grid>
+                    <Grid>
             <Grid>
             <Grid>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
 
-                <ScrollViewer Margin="0,10,0,0" Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                    <ItemsControl ItemsSource="{Binding Movies}">
-                        <ItemsControl.ItemsPanel >
-                            <ItemsPanelTemplate>
-                                <WrapPanel ItemWidth="225" ItemHeight="275"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <userControl:UC_Movie 
+                        <ScrollViewer Margin="0,10,0,0" Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding Movies}">
+                                <ItemsControl.ItemsPanel >
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel ItemWidth="225" ItemHeight="275"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <userControl:UC_Movie 
                                     Title="{Binding Title}" 
                                     imdbRating="{Binding imdbRating}"
                                     Year="{Binding Year}"
                                     Poster="{Binding Poster}">
-                                    <dvxcc:Interaction.Behaviors>
-                                        <dvxcc:EventToCommand EventName="AddToFavorites" Command="{Binding DataContext.AddToFavoritesCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" ></dvxcc:EventToCommand>
-                                    </dvxcc:Interaction.Behaviors>
-                                </userControl:UC_Movie>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
+                                            <dvxcc:Interaction.Behaviors>
+                                            <dvxcc:EventToCommand EventName="AddToFavorites" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.AddToFavoritesCommand}"></dvxcc:EventToCommand>
+                                            </dvxcc:Interaction.Behaviors>
+                                        </userControl:UC_Movie>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
 
-                <DockPanel>
-                    <Menu Foreground="WhiteSmoke" DockPanel.Dock="Right" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <MenuItem
+                        <DockPanel>
+                            <Menu Foreground="WhiteSmoke" DockPanel.Dock="Right" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <MenuItem
                             Background="#181818" Header="_Main">
-                            <MenuItem Header="Profile" Icon="{materialDesign:PackIcon Kind=EmojiManProfile}"></MenuItem>
-                            <MenuItem  Header="Favorites" Icon="{materialDesign:PackIcon Kind=Heart}" />
-                            <MenuItem Header="Watch List" Icon="{materialDesign:PackIcon Kind=WatchLater}" />
-                            <Separator />
-                            <MenuItem Header="Log Out" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Command="{Binding LogOutCommand}"/>
-                        </MenuItem>
+                                    <MenuItem Header="Profile" Icon="{materialDesign:PackIcon Kind=EmojiManProfile}"></MenuItem>
+                                    <MenuItem  Header="Favorites" Icon="{materialDesign:PackIcon Kind=Heart}" />
+                                    <MenuItem Header="Watch List" Icon="{materialDesign:PackIcon Kind=WatchLater}" />
+                                    <Separator />
+                                    <MenuItem Header="Log Out" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Command="{Binding LogOutCommand}"/>
+                                </MenuItem>
 
-                    </Menu>
+                            </Menu>
 
-                    <materialDesign:ColorZone
+                            <materialDesign:ColorZone
                          VerticalAlignment="Center"
                          Mode="Standard"
                          Padding="8 4 8 4"
@@ -93,13 +95,13 @@
                          Margin="16 5 16 5"
                          materialDesign:ElevationAssist.Elevation="Dp6">
 
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
 
-                            <TextBox
+                                    <TextBox
                                 Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
                                 Margin="8 0 0 0"
                                 materialDesign:HintAssist.Hint="Search"
@@ -110,16 +112,16 @@
                                 h:EnterKeyHelpers.EnterKeyCommand="{Binding SearchCommand}"/>
 
 
-                            <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}" Command="{Binding SearchCommand}">
-                                <materialDesign:PackIcon Kind="Search" Opacity=".56" />
-                            </Button>
+                                    <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}" Command="{Binding SearchCommand}">
+                                        <materialDesign:PackIcon Kind="Search" Opacity=".56" />
+                                    </Button>
 
-                        </Grid>
-                    </materialDesign:ColorZone >
-                </DockPanel>
-            </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone >
+                        </DockPanel>
+                    </Grid>
 
-        </Grid>
+                </Grid>
         </materialDesign:Card>
 
     </Border>
