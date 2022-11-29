@@ -20,7 +20,19 @@ namespace KeShMovies.UserControls;
 public partial class UC_Movie : UserControl
 {
     public event EventHandler<EventArgs>? AddToFavorites;
-    public bool IsFavorite { get; set; } = false;
+    public event EventHandler<EventArgs>? RemoveFromFavorites;
+
+    public string ImdbId
+    {
+        get { return (string)GetValue(ImdbIdProperty); }
+        set { SetValue(ImdbIdProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for ImdbId.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty ImdbIdProperty =
+        DependencyProperty.Register("ImdbId", typeof(string), typeof(UC_Movie));
+
+
 
     public string Poster
     {
@@ -42,6 +54,18 @@ public partial class UC_Movie : UserControl
     public static readonly DependencyProperty TitleProperty =
         DependencyProperty.Register("Title", typeof(string), typeof(UC_Movie));
 
+
+
+
+    public bool IsFavorite
+    {
+        get { return (bool)GetValue(IsFavoriteProperty); }
+        set { SetValue(IsFavoriteProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for IsFavorite.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty IsFavoriteProperty =
+        DependencyProperty.Register("IsFavorite", typeof(bool), typeof(UC_Movie));
 
 
 
@@ -70,8 +94,13 @@ public partial class UC_Movie : UserControl
         InitializeComponent();
     }
 
-    private void ToggleButton_Click(object sender, RoutedEventArgs e)
+    private void ToggleButton_Checked(object sender, RoutedEventArgs e)
     {
         AddToFavorites?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+    {
+        RemoveFromFavorites?.Invoke(this, EventArgs.Empty);
     }
 }

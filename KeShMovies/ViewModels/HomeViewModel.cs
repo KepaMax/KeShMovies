@@ -1,10 +1,13 @@
 ﻿using Autofac;
+using DevExpress.Mvvm.Native;
 using KeShMovies.Commands;
 using KeShMovies.Models;
 using KeShMovies.Navigation;
 using KeShMovies.Services;
+using KeShMovies.UserControls;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
@@ -18,6 +21,7 @@ public class HomeViewModel : BaseViewModel
     public ICommand SearchCommand { get; set; }
     public ICommand LogOutCommand { get; set; }
     public ICommand AddToFavoritesCommand { get; set; }
+    public ICommand RemoveFromFavoritesCommand { get; set; }
 
     public string? SearchText { get; set; }
     public User CurrentUser { get; set; }
@@ -31,11 +35,38 @@ public class HomeViewModel : BaseViewModel
         SearchCommand = new RelayCommand(ExecuteSearchCommand, CanExecuteSearchCommand);
         LogOutCommand = new RelayCommand(ExecuteLogOutCommand);
         AddToFavoritesCommand = new RelayCommand(ExecuteAddToFavoritesCommand);
+        RemoveFromFavoritesCommand = new RelayCommand(ExecuteRemoveFromFavoritesCommand);
     }
 
-    private void ExecuteLogOutCommand(object? parametr) => _navigationStore.CurrentViewModel = App.Container?.Resolve<LogInViewModel>(); 
+    private void ExecuteRemoveFromFavoritesCommand(object? parametr)
+    {
+        if (parametr is UC_Movie movie && CurrentUser is not null)
+        {
+            if (CurrentUser.Favorites is null)
+                return;
 
-    private void ExecuteAddToFavoritesCommand(object? parametr) => MessageBox.Show("Hello Bro");
+            var removeId = movie.ImdbId + ';';
+            var startIndex = CurrentUser.Favorites.IndexOf(removeId);
+
+            if (CurrentUser.Favorites.Contains(movie.ImdbId))
+                CurrentUser.Favorites=CurrentUser.Favorites.Remove(startIndex, removeId.Length);
+
+        }
+    }
+
+    private void ExecuteLogOutCommand(object? parametr) => _navigationStore.CurrentViewModel = App.Container?.Resolve<LogInViewModel>();
+
+    private void ExecuteAddToFavoritesCommand(object? parametr)
+    {
+        if (parametr is UC_Movie movie && CurrentUser is not null)
+        {
+            if (CurrentUser.Favorites is null)
+                CurrentUser.Favorites = string.Empty;
+
+            if (!CurrentUser.Favorites.Contains(movie.ImdbId))
+                CurrentUser.Favorites += movie.ImdbId + ';';
+        }
+    }
 
     private bool CanExecuteSearchCommand(object? parametr) => !string.IsNullOrWhiteSpace(SearchText);
 
@@ -55,6 +86,9 @@ public class HomeViewModel : BaseViewModel
                 var movieJson = await OmdbService.GetConcreteMovie(result.imdbID);
 
                 var movie = JsonSerializer.Deserialize<Movie>(movieJson);
+                if (CurrentUser.Favorites.Contains(movie.imdbID)) 
+                    movie.IsFavorite = true;
+
                 if (movie is not null)
                     Movies.Add(movie);
             }
