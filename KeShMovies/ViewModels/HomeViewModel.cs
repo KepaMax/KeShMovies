@@ -42,9 +42,6 @@ public class HomeViewModel : BaseViewModel
     {
         if (parametr is UC_Movie movie && CurrentUser is not null)
         {
-            if (CurrentUser.Favorites is null)
-                return;
-
             var removeId = movie.ImdbId + ';';
             var startIndex = CurrentUser.Favorites.IndexOf(removeId);
 
@@ -60,9 +57,6 @@ public class HomeViewModel : BaseViewModel
     {
         if (parametr is UC_Movie movie && CurrentUser is not null)
         {
-            if (CurrentUser.Favorites is null)
-                CurrentUser.Favorites = string.Empty;
-
             if (!CurrentUser.Favorites.Contains(movie.ImdbId))
                 CurrentUser.Favorites += movie.ImdbId + ';';
         }
