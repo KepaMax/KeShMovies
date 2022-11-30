@@ -22,7 +22,8 @@ public class HomeViewModel : BaseViewModel
     public ICommand LogOutCommand { get; set; }
     public ICommand AddToFavoritesCommand { get; set; }
     public ICommand RemoveFromFavoritesCommand { get; set; }
-
+    public ICommand SwitchToFavoritesCommand { get; set; }
+    
     public string? SearchText { get; set; }
     public User CurrentUser { get; set; }
 
@@ -36,6 +37,12 @@ public class HomeViewModel : BaseViewModel
         LogOutCommand = new RelayCommand(ExecuteLogOutCommand);
         AddToFavoritesCommand = new RelayCommand(ExecuteAddToFavoritesCommand);
         RemoveFromFavoritesCommand = new RelayCommand(ExecuteRemoveFromFavoritesCommand);
+        SwitchToFavoritesCommand = new RelayCommand(ExecuteSwitchToFavoritesCommand);
+    }
+
+    private void ExecuteSwitchToFavoritesCommand(object? obj)
+    {
+        _navigationStore.CurrentViewModel = new FavoritesViewModel(CurrentUser, _navigationStore);
     }
 
     private void ExecuteRemoveFromFavoritesCommand(object? parametr)
@@ -59,6 +66,7 @@ public class HomeViewModel : BaseViewModel
         {
             if (!CurrentUser.Favorites.Contains(movie.ImdbId))
                 CurrentUser.Favorites += movie.ImdbId + ';';
+
         }
     }
 

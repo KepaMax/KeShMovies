@@ -202,6 +202,11 @@
             <DataTemplate DataType="{x:Type ViewModels:LogInViewModel}">
                 <Views:LogInView/>
             </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type ViewModels:FavoritesViewModel}">
+                <Views:FavoritesView/>
+            </DataTemplate>
+
 
         </ContentControl.Resources>
     </ContentControl>
