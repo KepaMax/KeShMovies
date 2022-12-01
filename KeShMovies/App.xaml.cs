@@ -37,7 +37,7 @@ public partial class App : Application
 
         Container = builder.Build();
 
-        navigationStore.CurrentViewModel = Container.Resolve<HomeViewModel>();
+        navigationStore.CurrentViewModel = Container.Resolve<LogInViewModel>();
 
         MainView mainView = new();
         mainView.DataContext= Container.Resolve<MainViewModel>();

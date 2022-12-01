@@ -5,15 +5,45 @@
              xmlns:local="clr-namespace:KeShMovies.UserControls" 
              xmlns:prism="http://prismlibrary.com/"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="275" Width="225">
+             Height="225" Width="175" >
 
-    <Border Height="250" Width="200" CornerRadius="20" >
+    <Border Height="200" Width="150" CornerRadius="20">
         <Border.Background>
             <ImageBrush Stretch="UniformToFill"  ImageSource="{Binding Poster}"/>
         </Border.Background>
-
+        <Border.Style>
+     
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                    <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Width" To="175" />
+                                    <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Height" To="225" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                    <DoubleAnimation Duration="0:0:0.800" Storyboard.TargetProperty="Width" To="150" />
+                                    <DoubleAnimation Duration="0:0:0.800" Storyboard.TargetProperty="Height" To="200" />
+                                    
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            
+        </Border.Style>
         <Grid>
 
             <Grid.RowDefinitions>

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="madara.gif" />
     <None Remove="UserControls\image_error_full.png" />
     <None Remove="Views\Adsız tasarım.png" />
     <None Remove="Views\denise-jans-OaVJQZ-nFD0-unsplash.jpg" />
@@ -22,10 +23,6 @@
     <None Remove="Views\KeSh.gif" />
     <None Remove="Views\logo.png" />
     <None Remove="Views\Movie Logo.gif" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,9 +39,13 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="XamlAnimatedGif" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="madara.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="StaticFiles\Images\logo.png" />
     <Resource Include="Views\Adsız tasarım.png" />
     <Resource Include="Views\denise-jans-OaVJQZ-nFD0-unsplash.jpg" />

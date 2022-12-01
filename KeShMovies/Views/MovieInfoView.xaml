@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="KeShMovies.Views.MovieInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KeShMovies.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:dvxcc="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+    <Border
+        CornerRadius="10"                    
+            BorderThickness="2"
+            Opacity="0.95">
+        <Border.Background>
+            <ImageBrush ImageSource="{Binding Movie.Poster}" Stretch="UniformToFill"/>
+        </Border.Background>
+
+        <materialDesign:Card
+            
+            
+            Margin="100,20"
+  materialDesign:ShadowAssist.ShadowDepth="Depth5"
+  materialDesign:ShadowAssist.ShadowEdges="All"
+  Padding="32"
+  >
+
+            <materialDesign:Card.Background>
+
+                <SolidColorBrush Color="Gray" Opacity="0.50"></SolidColorBrush>
+            </materialDesign:Card.Background>
+
+
+
+            <Grid>
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="90"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Foreground="White" VerticalAlignment="Center" >
+                            <materialDesign:PackIcon Kind="Movie" Height="60" Width="60"></materialDesign:PackIcon>
+                            </TextBlock>
+                            <Viewbox Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Height="50">
+
+                            <TextBlock  Margin="5"   Foreground="White" VerticalAlignment="Center" Text="{Binding Movie.Title}" FontSize="40" FontFamily="Comic Sans MS, Verdana" TextWrapping ="WrapWithOverflow"/>
+                            </Viewbox>
+
+
+                        </Grid>
+
+
+
+                        <Button  Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Center" Command="{Binding UndoCommand}" Content="{materialDesign:PackIcon Kind=Undo, Size=25}"
+                                
+  ToolTip="Go Back"
+   >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#121212"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#2d2d2d"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="80" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                    </Grid>
+                    <Separator VerticalAlignment="Bottom" BorderThickness="5" BorderBrush="White"></Separator>
+                </Grid>
+
+            </Grid>
+        </materialDesign:Card>
+
+    </Border>
+
+
+
+
+
+</UserControl>

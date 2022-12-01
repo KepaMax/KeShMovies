@@ -53,7 +53,7 @@ public class LogInViewModel : BaseViewModel
             {
                 if (user.Password == Password)
                 {
-                    _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore);
+                    _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore, _userRepository);
                     return;
                 }
                 MessageBox.Show("Password Don't Match");
@@ -70,7 +70,7 @@ public class LogInViewModel : BaseViewModel
         {
             if (user.Password == Password)
             {
-                _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore);
+                _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore,_userRepository);
                 return;
             }
             MessageBox.Show("Password Don't Match");

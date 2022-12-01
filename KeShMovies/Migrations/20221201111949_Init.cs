@@ -11,7 +11,6 @@ namespace KeShMovies.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -20,7 +19,7 @@ namespace KeShMovies.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WatchList = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    History = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Favorites = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -32,9 +31,6 @@ namespace KeShMovies.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "List<string>");
-
             migrationBuilder.DropTable(
                 name: "Users");
         }

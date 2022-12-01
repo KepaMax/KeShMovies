@@ -31,10 +31,7 @@
   >
 
             <materialDesign:Card.Background>
-                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1.2">
-                    <GradientStop Color="Transparent" Offset="0"/>
-                    <GradientStop Color="#8E0E00" Offset="3"/>
-                </LinearGradientBrush>
+                <SolidColorBrush Color="Gray" Opacity="0.25"></SolidColorBrush>
             </materialDesign:Card.Background>
 
 
@@ -51,7 +48,7 @@
                         <ItemsControl ItemsSource="{Binding Movies}">
                             <ItemsControl.ItemsPanel >
                                 <ItemsPanelTemplate>
-                                    <WrapPanel ItemWidth="225" ItemHeight="275"/>
+                                    <WrapPanel ItemWidth="200" ItemHeight="250"/>
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
@@ -67,6 +64,8 @@
                                                                   CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type userControl:UC_Movie}}}"></dvxcc:EventToCommand>
                                             <dvxcc:EventToCommand EventName="RemoveFromFavorites" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.RemoveFromFavoritesCommand}"
                                                                   CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type userControl:UC_Movie}}}"></dvxcc:EventToCommand>
+                                            <dvxcc:EventToCommand EventName="MouseDoubleClick" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}, AncestorLevel=2}, Path=DataContext.OpenFullInfoCommand}"
+                                                                  CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type userControl:UC_Movie}}}"></dvxcc:EventToCommand>
                                         </dvxcc:Interaction.Behaviors>
                                     </userControl:UC_Movie>
                                 </DataTemplate>
@@ -74,18 +73,27 @@
                         </ItemsControl>
                     </ScrollViewer>
 
-                    <DockPanel>
-                        <Menu Foreground="WhiteSmoke" DockPanel.Dock="Right" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="90"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Menu materialDesign:MenuAssist.TopLevelMenuItemHeight="20" Width="47" Foreground="WhiteSmoke" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
                             <MenuItem
-                            Background="#181818" Header="_Main">
+                            Background="#181818"  Icon="{materialDesign:PackIcon Kind=HamburgerMenu}" Height="40"  >
                                 <MenuItem Header="Profile" Icon="{materialDesign:PackIcon Kind=EmojiManProfile}"></MenuItem>
                                 <MenuItem  Header="Favorites" Icon="{materialDesign:PackIcon Kind=Heart}" Command="{Binding SwitchToFavoritesCommand}" />
-                                <MenuItem Header="Watch List" Icon="{materialDesign:PackIcon Kind=WatchLater}" />
+                                <MenuItem Header="Watch List" Icon="{materialDesign:PackIcon Kind=WatchLater}" Command="{Binding SwitchToHistoryCommand}"/>
                                 <Separator />
                                 <MenuItem Header="Log Out" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Command="{Binding LogOutCommand}"/>
                             </MenuItem>
 
                         </Menu>
+
+                        
+                       
+
 
                         <materialDesign:ColorZone
                          VerticalAlignment="Center"
@@ -120,7 +128,7 @@
 
                             </Grid>
                         </materialDesign:ColorZone >
-                    </DockPanel>
+                    </Grid>
                 </Grid>
 
             </Grid>

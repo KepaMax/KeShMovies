@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KeShMovies.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20221119144756_Init")]
+    [Migration("20221201111949_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -37,26 +37,18 @@ namespace KeShMovies.Migrations
                     b.Property<string>("Favorites")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("History")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WatchList")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<string>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<string>");
                 });
 #pragma warning restore 612, 618
         }

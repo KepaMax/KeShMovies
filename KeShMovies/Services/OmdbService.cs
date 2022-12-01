@@ -26,7 +26,7 @@ public static class OmdbService
 
     public static async Task<string> GetConcreteMovie(string imdbId)
     {
-        string url = $"http://www.omdbapi.com/?apikey={_key}&i={imdbId}";
+        string url = $"http://www.omdbapi.com/?apikey={_key}&i={imdbId}&plot=full";
         var task = await _client.GetStringAsync(url);
         return task;
     }

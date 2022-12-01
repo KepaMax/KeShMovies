@@ -28,7 +28,6 @@ public partial class UC_Movie : UserControl
         set { SetValue(ImdbIdProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for ImdbId.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty ImdbIdProperty =
         DependencyProperty.Register("ImdbId", typeof(string), typeof(UC_Movie));
 
@@ -63,7 +62,6 @@ public partial class UC_Movie : UserControl
         set { SetValue(IsFavoriteProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for IsFavorite.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty IsFavoriteProperty =
         DependencyProperty.Register("IsFavorite", typeof(bool), typeof(UC_Movie));
 
@@ -103,4 +101,5 @@ public partial class UC_Movie : UserControl
     {
         RemoveFromFavorites?.Invoke(this, EventArgs.Empty);
     }
+
 }

@@ -97,7 +97,7 @@ At Least 1 UpperCase";
             _users.Add(user);
             _userRepository.Add(user);
 
-            _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore);
+            _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore, _userRepository);
             return;
         }
 
