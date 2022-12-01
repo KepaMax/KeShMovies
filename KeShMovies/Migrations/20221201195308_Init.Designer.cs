@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KeShMovies.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20221201111949_Init")]
+    [Migration("20221201195308_Init")]
     partial class Init
     {
         /// <inheritdoc />

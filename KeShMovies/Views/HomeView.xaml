@@ -119,6 +119,7 @@
                                 BorderThickness="0"
                                 MinWidth="200"
                                 VerticalAlignment="Center"
+                                    TextWrapping="WrapWithOverflow"
                                 h:EnterKeyHelpers.EnterKeyCommand="{Binding SearchCommand}"/>
 
 
