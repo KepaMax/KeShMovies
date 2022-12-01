@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace KeShMovies.ViewModels;
 
-internal class MovieInfoViewModel : BaseViewModel
+public class MovieInfoViewModel : BaseViewModel
 {
 
     private readonly NavigationStore _navigationStore;
@@ -31,12 +31,10 @@ internal class MovieInfoViewModel : BaseViewModel
         _navigationStore=navigationStore;
         Movie = movie;
         if (Movie.Poster == "N/A")
-            Movie.Poster = "/Views/Movie Logo.gif";
-        MessageBox.Show(Movie.imdbVotes);
+            Movie.Poster = "/StaticFiles/Images/Movie Logo.gif";
+ 
         LoadCommand = new RelayCommand(ExecuteLoadCommand);
         UndoCommand = new RelayCommand(ExecuteUndoCommand);
-
-
     }
 
     private void ExecuteUndoCommand(object? parametr)
