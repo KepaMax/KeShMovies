@@ -31,7 +31,7 @@
             </materialDesign:Card.Background>
 
 
-
+            <!--  Language Genre Actors PLot Country Year Type Imdb Production Director Runtime   -->
             <Grid>
                 <Grid>
 
@@ -94,6 +94,29 @@
 
                     </Grid>
                     <Separator VerticalAlignment="Bottom" BorderThickness="5" BorderBrush="White"></Separator>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </Grid>
                 </Grid>
 
             </Grid>

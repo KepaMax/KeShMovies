@@ -55,6 +55,20 @@ public class HomeViewModel : BaseViewModel
             var movieJson = await OmdbService.GetConcreteMovie(Movie.ImdbId);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
+
+
+            if (!CurrentUser.History.Contains(movie.imdbID))
+            {
+                CurrentUser.History += movie.imdbID + ';';
+            }
+            else
+            {
+                var changedId = movie.imdbID + ';';
+                var startIndex = CurrentUser.History.IndexOf(changedId);
+                CurrentUser.History = CurrentUser.History.Remove(startIndex, changedId.Length)+ changedId;
+            }
+            _userRepository.Update(CurrentUser);
+
             _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie, this, _navigationStore);
         }
 

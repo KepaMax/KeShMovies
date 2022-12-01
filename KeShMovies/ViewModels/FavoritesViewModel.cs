@@ -75,6 +75,9 @@ public class FavoritesViewModel : BaseViewModel
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
             movie.IsFavorite = true;
 
+            if (movie.Poster == "N/A")
+                movie.Poster = "/Views/Movie Logo.gif";
+
             if (movie is not null)
                 Favorites.Add(movie);
         }

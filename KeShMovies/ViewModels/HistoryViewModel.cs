@@ -45,18 +45,20 @@ public class HistoryViewModel : BaseViewModel
     {
         if (string.IsNullOrWhiteSpace(CurrentUser.Favorites)) return;
 
-        var favorites = CurrentUser.Favorites.TrimEnd(';').Split(';');
+        var favorites = CurrentUser.History.TrimEnd(';').Split(';');
 
-
-        foreach (var movieId in favorites)
+        for (int i = favorites.Length - 1; i >= 0; i--)
         {
-            var movieJson = await OmdbService.GetConcreteMovie(movieId);
+            var movieJson = await OmdbService.GetConcreteMovie(favorites[i]);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
-            movie.IsFavorite = true;
+
+            if (movie.Poster == "N/A")
+                movie.Poster = "/Views/Movie Logo.gif";
 
             if (movie is not null)
                 History.Add(movie);
         }
+
     }
 }
