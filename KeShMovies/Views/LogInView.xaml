@@ -29,7 +29,7 @@
                 <StackPanel Width="220"
                             Orientation="Vertical" >
                     <Image 
-                        gif:AnimationBehavior.SourceUri="/Views/Movie Logo.gif"
+                        gif:AnimationBehavior.SourceUri="/StaticFiles/Images/Movie Logo.gif"
                         Width="100" Height="100">
                         <Image.Clip>
                             <EllipseGeometry RadiusX="50" RadiusY="50" Center="50 50"/>

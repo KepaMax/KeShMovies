@@ -46,12 +46,11 @@
     <Resource Include="madara.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="StaticFiles\Images\logo.png" />
-    <Resource Include="Views\Adsız tasarım.png" />
-    <Resource Include="Views\denise-jans-OaVJQZ-nFD0-unsplash.jpg" />
+    <Resource Include="StaticFiles\Images\Adsız tasarım.png" />
+    <Resource Include="StaticFiles\Images\denise-jans-OaVJQZ-nFD0-unsplash.jpg" />
     <Resource Include="Views\KeSh Movies.gif" />
     <Resource Include="Views\KeSh.gif" />
-    <Resource Include="Views\Movie Logo.gif" />
+    <Resource Include="StaticFiles\Images\Movie Logo.gif" />
   </ItemGroup>
 
   <ItemGroup>

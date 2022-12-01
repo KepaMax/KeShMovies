@@ -6,7 +6,7 @@
         xmlns:Views="clr-namespace:KeShMovies.Views"
         xmlns:ViewModels="clr-namespace:KeShMovies.ViewModels"
         mc:Ignorable="d"
-        Title="MainView" Height="550" Width="800" Background="#191B1F" Icon="/Views/Adsız tasarım.png">
+        Title="KeSh Movies" Height="550" Width="800" Background="#191B1F"  Icon="/StaticFiles/Images/Adsız tasarım.png">
 
     <Window.Resources>
         <SolidColorBrush x:Key="StandardBorderBrush" Color="#888" />

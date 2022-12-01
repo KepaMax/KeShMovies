@@ -19,7 +19,7 @@
             BorderThickness="2"
             Opacity="0.95">
         <Border.Background>
-            <ImageBrush ImageSource="/Views/denise-jans-OaVJQZ-nFD0-unsplash.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="/StaticFiles/Images/denise-jans-OaVJQZ-nFD0-unsplash.jpg" Stretch="UniformToFill"/>
         </Border.Background>
 
         <materialDesign:Card
