@@ -19,8 +19,6 @@
     <None Remove="UserControls\image_error_full.png" />
     <None Remove="Views\Adsız tasarım.png" />
     <None Remove="Views\denise-jans-OaVJQZ-nFD0-unsplash.jpg" />
-    <None Remove="Views\KeSh Movies.gif" />
-    <None Remove="Views\KeSh.gif" />
     <None Remove="Views\logo.png" />
     <None Remove="Views\Movie Logo.gif" />
   </ItemGroup>
@@ -48,8 +46,6 @@
     </Resource>
     <Resource Include="StaticFiles\Images\Adsız tasarım.png" />
     <Resource Include="StaticFiles\Images\denise-jans-OaVJQZ-nFD0-unsplash.jpg" />
-    <Resource Include="Views\KeSh Movies.gif" />
-    <Resource Include="Views\KeSh.gif" />
     <Resource Include="StaticFiles\Images\Movie Logo.gif" />
   </ItemGroup>
 
