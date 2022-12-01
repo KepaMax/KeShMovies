@@ -66,7 +66,7 @@ public class LogInViewModel : BaseViewModel
 
 
         user = _users?.Find(u => u.Username == UsernameOrEmail);
-        if (user is not null && user.Password == Password)
+        if (user is not null)
         {
             if (user.Password == Password)
             {
