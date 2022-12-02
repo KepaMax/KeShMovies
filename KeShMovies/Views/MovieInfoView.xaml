@@ -203,8 +203,8 @@
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Production: " FontFamily="Segoe UI Black" FontSize="16"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.Production}"  Foreground="White"/>
+                            <TextBlock Text="Box Office: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.BoxOffice}"  Foreground="White"/>
 
                         </Grid>
             <!--  Language Genre Actors PLot Country Year Type Imdb Production Director Runtime   -->

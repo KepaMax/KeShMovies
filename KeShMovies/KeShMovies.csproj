@@ -15,11 +15,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="StaticFiles\Images\no-image-icon-6.png" />
     <None Remove="UserControls\image_error_full.png" />
     <None Remove="Views\Adsız tasarım.png" />
     <None Remove="Views\denise-jans-OaVJQZ-nFD0-unsplash.jpg" />
     <None Remove="Views\logo.png" />
     <None Remove="Views\Movie Logo.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="StaticFiles\Images\no-image-icon-6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

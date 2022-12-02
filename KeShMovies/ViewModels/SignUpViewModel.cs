@@ -1,4 +1,5 @@
-﻿using KeShMovies.Commands;
+﻿using DevExpress.Mvvm.UI.Native;
+using KeShMovies.Commands;
 using KeShMovies.Models;
 using KeShMovies.Navigation;
 using KeShMovies.Repositories;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Runtime.Serialization.Formatters;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -75,8 +77,8 @@ At Least 1 UpperCase";
     {
         var user = new User()
         {
-            Email = this.Email.Trim(),
-            Username = this.Username.Trim(),
+            Email = this.Email?.Trim(),
+            Username = this.Username?.Trim(),
             Password = this.Password
         };
 
