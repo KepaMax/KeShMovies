@@ -59,7 +59,7 @@ public class HomeViewModel : BaseViewModel
     {
         if (parametr is UC_Movie Movie)
         {
-            var movieJson = await OmdbService.GetConcreteMovie(Movie.ImdbId);
+            var movieJson = await OmdbService.GetConcreteMovieById(Movie.ImdbId);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
 
@@ -128,20 +128,25 @@ public class HomeViewModel : BaseViewModel
         {
             foreach (var result in movies.Search)
             {
-                var movieJson = await OmdbService.GetConcreteMovie(result.imdbID);
+                var movieCollectionJson = await OmdbService.GetConcreteMovieById(result.imdbID);
 
-                var movie = JsonSerializer.Deserialize<Movie>(movieJson);
-                if (CurrentUser.Favorites.Contains(movie.imdbID))
-                    movie.IsFavorite = true;
+                var movieFromCollection = JsonSerializer.Deserialize<Movie>(movieCollectionJson);
+                if (CurrentUser.Favorites.Contains(movieFromCollection.imdbID))
+                    movieFromCollection.IsFavorite = true;
 
-                if (movie.Poster == "N/A")
-                    movie.Poster = "/StaticFiles/Images/Movie Logo.gif";
+                if (movieFromCollection.Poster == "N/A")
+                    movieFromCollection.Poster = "/StaticFiles/Images/Movie Logo.gif";
 
-                if (movie is not null)
-                    Movies.Add(movie);
+                if (movieFromCollection is not null)
+                    Movies.Add(movieFromCollection);
             }
+
+            return;
         }
 
+        var movieJson = await OmdbService.GetConcreteMovieByTitle(SearchText);
+        var movie = JsonSerializer.Deserialize<Movie>(movieJson);
+        Movies.Add(movie);
 
     }
 }

@@ -55,7 +55,7 @@ public class FavoritesViewModel : BaseViewModel
     {
         if (parametr is UC_Movie Movie)
         {
-            var movieJson = await OmdbService.GetConcreteMovie(Movie.ImdbId);
+            var movieJson = await OmdbService.GetConcreteMovieById(Movie.ImdbId);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
 
@@ -100,7 +100,7 @@ public class FavoritesViewModel : BaseViewModel
 
         foreach (var movieId in favorites)
         {
-            var movieJson = await OmdbService.GetConcreteMovie(movieId);
+            var movieJson = await OmdbService.GetConcreteMovieById(movieId);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
             movie.IsFavorite = true;

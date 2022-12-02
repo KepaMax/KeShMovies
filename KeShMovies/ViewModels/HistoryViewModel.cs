@@ -56,7 +56,7 @@ public class HistoryViewModel : BaseViewModel
 
         for (int i = favorites.Length - 1; i >= 0; i--)
         {
-            var movieJson = await OmdbService.GetConcreteMovie(favorites[i]);
+            var movieJson = await OmdbService.GetConcreteMovieById(favorites[i]);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
 
@@ -75,7 +75,7 @@ public class HistoryViewModel : BaseViewModel
     {
         if (parametr is UC_MovieSimplified Movie)
         {
-            var movieJson = await OmdbService.GetConcreteMovie(Movie.ImdbId);
+            var movieJson = await OmdbService.GetConcreteMovieById(Movie.ImdbId);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
 
