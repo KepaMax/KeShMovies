@@ -64,7 +64,7 @@
 
                         </Grid>
 
-                        <Button  Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Center"  Content="{materialDesign:PackIcon Kind=Play, Size=25}"
+                        <Button Command="{Binding PlayTrailerCommand}"  Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Center"  Content="{materialDesign:PackIcon Kind=Play, Size=25}"
                                 
   ToolTip="Go To Trailer"
    >

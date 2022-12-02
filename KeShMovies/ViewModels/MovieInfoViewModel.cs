@@ -6,7 +6,10 @@ using KeShMovies.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -45,7 +48,17 @@ public class MovieInfoViewModel : BaseViewModel
 
     private void ExecutePlayTrailerCommand(object? parametr)
     {
-        
+        NameValueCollection nameValueCollection = new NameValueCollection();
+        nameValueCollection.Add("q", Movie.Title);
+        var webClient = new WebClient();
+        webClient.QueryString.Add(nameValueCollection);
+
+        var youtubesearch = new ProcessStartInfo
+        {
+            FileName = "https://www.youtube.com/results?search_query=" + Movie.Title + " trailer",
+            UseShellExecute = true
+        };
+        Process.Start(youtubesearch);
     }
 
 }
