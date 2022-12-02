@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800" Background="#121212">
     <Grid>
         <Image 
-                        gif:AnimationBehavior.SourceUri="/StaticFiles/Images/Movie Logo.gif"
+                        gif:AnimationBehavior.SourceUri="/StaticFiles/Images/KeSh Movies.gif"
                         Width="200" Height="200">
         </Image>
     </Grid>

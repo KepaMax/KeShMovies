@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="KeSh Movies.gif" />
     <None Remove="madara.gif" />
     <None Remove="UserControls\image_error_full.png" />
     <None Remove="Views\Adsız tasarım.png" />
@@ -25,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="KeSh Movies.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="StaticFiles\Images\KeSh Movies.gif">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

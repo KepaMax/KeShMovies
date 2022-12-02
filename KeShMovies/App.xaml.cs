@@ -11,6 +11,7 @@ using KeShMovies.ViewModels;
 using KeShMovies.Navigation;
 using KeShMovies.Repositories;
 using KeShMovies.Models;
+using System.Threading;
 
 namespace KeShMovies;
 
@@ -21,23 +22,21 @@ public partial class App : Application
     private void Application_Startup(object sender, StartupEventArgs e)
     {
         NavigationStore navigationStore = new();
-        User user = new();
-
         var builder = new ContainerBuilder();
 
         builder.RegisterInstance(navigationStore).SingleInstance();
-        builder.RegisterInstance(user).SingleInstance();
 
         builder.RegisterType<MainViewModel>();
         builder.RegisterType<HomeViewModel>();
         builder.RegisterType<SignUpViewModel>();
         builder.RegisterType<LogInViewModel>();
+        builder.RegisterType<StartScreenViewModel>();
         builder.RegisterType<EfUserRepository>().As<IUserRepository>();
         
 
         Container = builder.Build();
 
-        navigationStore.CurrentViewModel = Container.Resolve<LogInViewModel>();
+        navigationStore.CurrentViewModel = Container.Resolve<StartScreenViewModel>();
 
         MainView mainView = new();
         mainView.DataContext= Container.Resolve<MainViewModel>();

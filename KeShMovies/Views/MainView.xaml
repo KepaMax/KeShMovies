@@ -214,6 +214,10 @@
             <DataTemplate DataType="{x:Type ViewModels:MovieInfoViewModel}">
                 <Views:MovieInfoView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModels:StartScreenViewModel}">
+                <Views:StartScreenView/>
+            </DataTemplate>
         </ContentControl.Resources>
     </ContentControl>
     
