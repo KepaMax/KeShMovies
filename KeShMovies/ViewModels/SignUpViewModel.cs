@@ -10,6 +10,10 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using ToastNotifications.Position;
 
 namespace KeShMovies.ViewModels;
 
@@ -35,6 +39,21 @@ At Least 1 UpperCase";
     public string Username { get; set; } = default!;
     public string Password { get; set; } = default!;
 
+    private Notifier _notifier = new Notifier(cfg =>
+    {
+        cfg.PositionProvider = new WindowPositionProvider(
+            parentWindow: Application.Current.MainWindow,
+            corner: Corner.TopRight,
+            offsetX: 10,
+            offsetY: 10);
+
+        cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+            notificationLifetime: TimeSpan.FromSeconds(3),
+            maximumNotificationCount: MaximumNotificationCount.FromCount(3));
+
+        cfg.Dispatcher = Application.Current.Dispatcher;
+    });
+
     public SignUpViewModel(IUserRepository userRepository, NavigationStore navigationStore)
     {
 
@@ -43,7 +62,7 @@ At Least 1 UpperCase";
 
         _users = _userRepository.GetList() != null ? _userRepository.GetList() : new();
 
-        SignUpCommand = new RelayCommand(ExecuteSignUpCommand, CanExecuteContinueCommand);
+        SignUpCommand = new RelayCommand(ExecuteSignUpCommand);
         GoLogInCommand = new RelayCommand(ExecuteGoLogInCommandCommand);
     }
 
@@ -64,19 +83,19 @@ At Least 1 UpperCase";
 
         if(!IsValidEmail())
         {
-            MessageBox.Show($"Incorrect {nameof(Email)} Format");
+            _notifier.ShowError($"Incorrect {nameof(Email)} Format");
             return;
         }    
         
         if(!Regex.IsMatch(Username, usernameRegex))
         {
-            MessageBox.Show($"Incorrect {nameof(Username)} Format");
+            _notifier.ShowError($"Incorrect {nameof(Username)} Format");
             return;
         }
         
         if (!Regex.IsMatch(Password, passwordRegex))
         {
-            MessageBox.Show($"Incorrect {nameof(Password)} Format");
+            _notifier.ShowError($"Incorrect {nameof(Password)} Format");
             return;
         }
 
@@ -84,15 +103,17 @@ At Least 1 UpperCase";
         {
             if (_users.Any(u => u.Email == user.Email))
             {
-                MessageBox.Show($"This {nameof(Email)} is already Used");
+                _notifier.ShowError($"This {nameof(Email)} Is Already Used");
                 return;
             }
 
             if (_users.Any(u => u.Username == user.Username))
             {
-                MessageBox.Show($"This {nameof(Username)}  is already Used");
+                _notifier.ShowError($"This {nameof(Username)} Is Already Used");
                 return;
             }
+
+            _notifier.ShowSuccess($"Succesfully Signed Up!");
 
             _users.Add(user);
             _userRepository.Add(user);
@@ -102,23 +123,6 @@ At Least 1 UpperCase";
         }
 
     }
-
-    private bool CanExecuteContinueCommand(object? parametr)
-    {
-        if (parametr is StackPanel sp)
-        {
-            foreach (var txt in sp.Children.OfType<TextBox>())
-            {
-                if (string.IsNullOrWhiteSpace(txt.Text))
-                    return false;
-            }
-
-            return true;
-        }
-
-        return false;
-    }
-
 
     private bool IsValidEmail()
     {

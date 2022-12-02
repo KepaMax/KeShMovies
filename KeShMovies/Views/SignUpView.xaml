@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
-             xmlns:local="clr-namespace:KeShMovies.Views" 
              xmlns:h="clr-namespace:KeShMovies.HelperElements" 
              xmlns:usercontrols="clr-namespace:KeShMovies.UserControls"
              
@@ -36,7 +35,7 @@
                             <EllipseGeometry RadiusX="50" RadiusY="50" Center="50 50"/>
                         </Image.Clip>
                     </Image>
-                    
+
                     <TextBlock Text="SIGN UP"
                                Foreground="White"
                                Margin="10"
@@ -44,7 +43,7 @@
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
-                    
+
                     <TextBlock Text="Sono Sharingan Omae Wa Doko Made Mieteiru"
                                Foreground="LightGray"
                                FontSize="12"
