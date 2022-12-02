@@ -45,6 +45,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="90"/>
                         </Grid.ColumnDefinitions>
                         <Grid >
                             <Grid.ColumnDefinitions>
@@ -63,9 +64,33 @@
 
                         </Grid>
 
+                        <Button  Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Center"  Content="{materialDesign:PackIcon Kind=Play, Size=25}"
+                                
+  ToolTip="Go To Trailer"
+   >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#121212"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#2d2d2d"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="80" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
 
-
-                        <Button  Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Center" Command="{Binding UndoCommand}" Content="{materialDesign:PackIcon Kind=Undo, Size=25}"
+                        <Button  Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="2" HorizontalAlignment="Center" Command="{Binding UndoCommand}" Content="{materialDesign:PackIcon Kind=Undo, Size=25}"
                                 
   ToolTip="Go Back"
    >

@@ -21,8 +21,8 @@ public class MovieInfoViewModel : BaseViewModel
     private readonly NavigationStore _navigationStore;
     private readonly BaseViewModel _previousViewModel;
     public Movie Movie { get; set; }
-    public ICommand LoadCommand { get; set; }
     public ICommand UndoCommand { get; set; }
+    public ICommand PlayTrailerCommand { get; set; }
 
     public MovieInfoViewModel(Movie movie,BaseViewModel previousViewModel, NavigationStore navigationStore)
     {
@@ -32,8 +32,8 @@ public class MovieInfoViewModel : BaseViewModel
         Movie = movie;
         if (Movie.Poster == "N/A")
             Movie.Poster = "/StaticFiles/Images/Movie Logo.gif";
- 
-        LoadCommand = new RelayCommand(ExecuteLoadCommand);
+
+        PlayTrailerCommand = new RelayCommand(ExecutePlayTrailerCommand);
         UndoCommand = new RelayCommand(ExecuteUndoCommand);
     }
 
@@ -42,9 +42,10 @@ public class MovieInfoViewModel : BaseViewModel
         _navigationStore.CurrentViewModel = _previousViewModel;
     }
 
-    private async void ExecuteLoadCommand(object? parametr)
+
+    private void ExecutePlayTrailerCommand(object? parametr)
     {
         
-
     }
+
 }
