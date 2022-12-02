@@ -126,7 +126,7 @@ At Least 1 UpperCase";
 
     private bool IsValidEmail()
     {
-        if (Email is null)
+        if (string.IsNullOrWhiteSpace(Email))
             return false;
 
         try

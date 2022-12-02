@@ -25,7 +25,7 @@ namespace KeShMovies.ViewModels
             _navigationStore = navigationStore;
 
             System.Timers.Timer timer = new();
-            timer.Interval = 7500;
+            timer.Interval = 5000;
             timer.Elapsed += Timer_Elapsed; ;
             timer.Start();
         }
