@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:KeShMovies.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="225" Width="175">
+             Height="225" Width="175" >
     
     <Border Height="200" Width="150" CornerRadius="20" >
         <Border.Background>

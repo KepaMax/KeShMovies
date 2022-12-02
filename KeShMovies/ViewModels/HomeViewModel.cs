@@ -32,7 +32,7 @@ public class HomeViewModel : BaseViewModel
     public string? SearchText { get; set; }
     public User CurrentUser { get; set; }
 
-    public HomeViewModel(User currentUser, NavigationStore navigationStore, IUserRepository userRepository)
+    public HomeViewModel(User currentUser, NavigationStore navigationStore, IUserRepository userRepository, string defaultSearch = null)
     {
         CurrentUser = currentUser;
         _navigationStore = navigationStore;
@@ -46,10 +46,17 @@ public class HomeViewModel : BaseViewModel
         SwitchToFavoritesCommand = new RelayCommand(ExecuteSwitchToFavoritesCommand);
         SwitchToHistoryCommand = new RelayCommand(ExecuteSwitchToHistoryCommand);
         OpenFullInfoCommand = new RelayCommand(ExecuteOpenFullInfoCommand);
+
+        if (defaultSearch != null)
+        {
+            SearchText= defaultSearch;
+            ExecuteSearchCommand(new object());
+        }
+
     }
 
     private async void ExecuteOpenFullInfoCommand(object? parametr)
-     {
+    {
         if (parametr is UC_Movie Movie)
         {
             var movieJson = await OmdbService.GetConcreteMovie(Movie.ImdbId);
@@ -64,7 +71,7 @@ public class HomeViewModel : BaseViewModel
             {
                 var changedId = movie.imdbID + ';';
                 var startIndex = CurrentUser.History.IndexOf(changedId);
-                CurrentUser.History = CurrentUser.History.Remove(startIndex, changedId.Length)+ changedId;
+                CurrentUser.History = CurrentUser.History.Remove(startIndex, changedId.Length) + changedId;
             }
             _userRepository.Update(CurrentUser);
             _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie, this, _navigationStore);
@@ -72,10 +79,10 @@ public class HomeViewModel : BaseViewModel
 
     }
 
-    private void ExecuteSwitchToHistoryCommand(object? obj) => _navigationStore.CurrentViewModel = new HistoryViewModel(CurrentUser, _navigationStore, _userRepository);
+    private void ExecuteSwitchToHistoryCommand(object? obj) => _navigationStore.CurrentViewModel = new HistoryViewModel(CurrentUser, this, _navigationStore, _userRepository);
 
 
-    private void ExecuteSwitchToFavoritesCommand(object? obj) => _navigationStore.CurrentViewModel = new FavoritesViewModel(CurrentUser, _navigationStore, _userRepository);
+    private void ExecuteSwitchToFavoritesCommand(object? obj) => _navigationStore.CurrentViewModel = new FavoritesViewModel(CurrentUser, this, _navigationStore, _userRepository, SearchText);
 
     private void ExecuteRemoveFromFavoritesCommand(object? parametr)
     {

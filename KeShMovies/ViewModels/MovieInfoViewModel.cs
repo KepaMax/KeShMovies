@@ -19,14 +19,14 @@ public class MovieInfoViewModel : BaseViewModel
 {
 
     private readonly NavigationStore _navigationStore;
-    private readonly HomeViewModel _homeViewModel;
+    private readonly BaseViewModel _previousViewModel;
     public Movie Movie { get; set; }
     public ICommand LoadCommand { get; set; }
     public ICommand UndoCommand { get; set; }
 
-    public MovieInfoViewModel(Movie movie,HomeViewModel homeViewModel, NavigationStore navigationStore)
+    public MovieInfoViewModel(Movie movie,BaseViewModel previousViewModel, NavigationStore navigationStore)
     {
-        _homeViewModel=homeViewModel;
+        _previousViewModel = previousViewModel;
 
         _navigationStore=navigationStore;
         Movie = movie;
@@ -39,7 +39,7 @@ public class MovieInfoViewModel : BaseViewModel
 
     private void ExecuteUndoCommand(object? parametr)
     {
-        _navigationStore.CurrentViewModel = _homeViewModel;
+        _navigationStore.CurrentViewModel = _previousViewModel;
     }
 
     private async void ExecuteLoadCommand(object? parametr)

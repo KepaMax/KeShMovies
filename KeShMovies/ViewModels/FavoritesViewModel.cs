@@ -22,17 +22,22 @@ public class FavoritesViewModel : BaseViewModel
 {
     private readonly IUserRepository _userRepository;
     private readonly NavigationStore _navigationStore;
+    private readonly BaseViewModel _previousViewModel;
+    private readonly string _searchText;
     public ICommand LoadCommand { get; set; }
     public ICommand RemoveFromFavoritesCommand { get; set; }
     public ICommand AddToFavoritesCommand { get; set; }
+    public ICommand OpenFullInfoCommand { get; set; }
     public ICommand UndoCommand { get; set; }
 
     public User CurrentUser { get; set; }
 
     public ObservableCollection<Movie> Favorites { get; set; }
 
-    public FavoritesViewModel(User currentUser, NavigationStore navigationStore, IUserRepository userRepository)
+    public FavoritesViewModel(User currentUser, BaseViewModel previousViewModel, NavigationStore navigationStore, IUserRepository userRepository, string searchText)
     {
+        _searchText = searchText;
+        _previousViewModel = previousViewModel;
         CurrentUser = currentUser;
         Favorites = new();
         _navigationStore = navigationStore;
@@ -42,12 +47,37 @@ public class FavoritesViewModel : BaseViewModel
         RemoveFromFavoritesCommand = new RelayCommand(ExecuteRemoveCommand);
         AddToFavoritesCommand = new RelayCommand(ExecuteAddToFavoritesCommand);
         UndoCommand = new RelayCommand(ExecuteUndoCommand);
+        OpenFullInfoCommand = new RelayCommand(ExecuteOpenFullInfoCommand);
         _userRepository = userRepository;
+    }
+
+    private async void ExecuteOpenFullInfoCommand(object? parametr)
+    {
+        if (parametr is UC_Movie Movie)
+        {
+            var movieJson = await OmdbService.GetConcreteMovie(Movie.ImdbId);
+
+            var movie = JsonSerializer.Deserialize<Movie>(movieJson);
+
+            if (!CurrentUser.History.Contains(movie.imdbID))
+            {
+                CurrentUser.History += movie.imdbID + ';';
+            }
+            else
+            {
+                var changedId = movie.imdbID + ';';
+                var startIndex = CurrentUser.History.IndexOf(changedId);
+                CurrentUser.History = CurrentUser.History.Remove(startIndex, changedId.Length) + changedId;
+            }
+            _userRepository.Update(CurrentUser);
+            _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie,this,_navigationStore); 
+        }
+
     }
 
     private void ExecuteUndoCommand(object? parametr)
     {
-        _navigationStore.CurrentViewModel = new HomeViewModel(CurrentUser, _navigationStore, _userRepository);
+        _navigationStore.CurrentViewModel = new HomeViewModel(CurrentUser,_navigationStore,_userRepository,_searchText);
     }
     private void ExecuteAddToFavoritesCommand(object? parametr)
     {
@@ -96,12 +126,7 @@ public class FavoritesViewModel : BaseViewModel
                 CurrentUser.Favorites = CurrentUser.Favorites.Remove(startIndex, removeId.Length);
                 _userRepository.Update(CurrentUser);
             }
-
-
         }
-
-
-
     }
 
 
