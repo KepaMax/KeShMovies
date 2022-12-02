@@ -55,7 +55,7 @@
                             <TextBlock Foreground="White" VerticalAlignment="Center" >
                             <materialDesign:PackIcon Kind="Movie" Height="60" Width="60"></materialDesign:PackIcon>
                             </TextBlock>
-                            <Viewbox Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Height="50">
+                            <Viewbox Grid.Column="1"  HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Height="50">
 
                             <TextBlock  Margin="5"   Foreground="White" VerticalAlignment="Center" Text="{Binding Movie.Title}" FontSize="40" FontFamily="Comic Sans MS, Verdana" TextWrapping ="WrapWithOverflow"/>
                             </Viewbox>
@@ -94,7 +94,6 @@
                     </Grid>
                     <Separator VerticalAlignment="Bottom" BorderThickness="5" BorderBrush="White"></Separator>
                     <Grid Grid.Row="1">
-            <!--  Language Genre Actors PLot Country Year Type Imdb Production Director Runtime   -->
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -106,88 +105,113 @@
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="70"/>
                         </Grid.RowDefinitions>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Imdb Rating: " FontFamily="Segoe UI Black" FontSize="16" />
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.imdbRating}"  Foreground="White"/>
+                            
 
 
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Language: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Language}"  Foreground="White"/>
                         </Grid>
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Genre: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Genre}"  Foreground="White"/>
+
                         </Grid>
 
                         <Grid Grid.Row="3">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Actors: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Actors}"  Foreground="White"/>
+
                         </Grid>
                         <Grid Grid.Row="4">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Country: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Country}"  Foreground="White"/>
+
                         </Grid>
                         <Grid Grid.Row="5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Year: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Year}"  Foreground="White"/>
+
                         </Grid>
                         <Grid Grid.Row="6">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Type: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Type}"  Foreground="White"/>
+
                         </Grid>
                         <Grid Grid.Row="7">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Production: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Production}"  Foreground="White"/>
+
                         </Grid>
+            <!--  Language Genre Actors PLot Country Year Type Imdb Production Director Runtime   -->
                         <Grid Grid.Row="8">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Director: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Director}"  Foreground="White"/>
+
                         </Grid>
                         <Grid Grid.Row="9">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Runtime: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Runtime}"  Foreground="White"/>
+
                         </Grid>
                         <Grid Grid.Row="10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Imdb Rating: "/>
+                            <TextBlock Text="Plot: " FontFamily="Segoe UI Black" FontSize="16"/>
+                            <ScrollViewer Grid.Column="1" Margin="0,10,0,0" Grid.Row="1" VerticalScrollBarVisibility="Auto">
+
+                                <TextBlock Grid.Column="1" Text="{Binding Movie.Plot}" Foreground="White" TextWrapping="WrapWithOverflow"/>
+
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
                 </Grid>
