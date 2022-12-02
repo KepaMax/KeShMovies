@@ -43,7 +43,7 @@ public class HistoryViewModel : BaseViewModel
 
     private async void ExecuteLoadCommand(object? parametr)
     {
-        if (string.IsNullOrWhiteSpace(CurrentUser.Favorites)) return;
+        if (string.IsNullOrWhiteSpace(CurrentUser.History)) return;
 
         var favorites = CurrentUser.History.TrimEnd(';').Split(';');
 

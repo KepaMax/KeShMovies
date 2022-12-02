@@ -42,7 +42,6 @@ public class LogInViewModel : BaseViewModel
 
     private void ExecuteLogInCommand(object? parametr)
     {
-
         User? user = null;
 
         if (IsValidEmail())

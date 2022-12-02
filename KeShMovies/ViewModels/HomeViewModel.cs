@@ -49,13 +49,12 @@ public class HomeViewModel : BaseViewModel
     }
 
     private async void ExecuteOpenFullInfoCommand(object? parametr)
-    {
+     {
         if (parametr is UC_Movie Movie)
         {
             var movieJson = await OmdbService.GetConcreteMovie(Movie.ImdbId);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
-
 
             if (!CurrentUser.History.Contains(movie.imdbID))
             {
@@ -68,7 +67,6 @@ public class HomeViewModel : BaseViewModel
                 CurrentUser.History = CurrentUser.History.Remove(startIndex, changedId.Length)+ changedId;
             }
             _userRepository.Update(CurrentUser);
-
             _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie, this, _navigationStore);
         }
 
@@ -105,7 +103,6 @@ public class HomeViewModel : BaseViewModel
                 CurrentUser.Favorites += movie.ImdbId + ';';
                 _userRepository.Update(CurrentUser);
             }
-
         }
     }
 
