@@ -13,6 +13,10 @@ using System.Linq;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using ToastNotifications.Position;
 
 namespace KeShMovies.ViewModels;
 
@@ -20,6 +24,20 @@ public class HomeViewModel : BaseViewModel
 {
     private readonly NavigationStore _navigationStore;
     private readonly IUserRepository _userRepository;
+    private Notifier _notifier = new Notifier(cfg =>
+    {
+        cfg.PositionProvider = new WindowPositionProvider(
+            parentWindow: Application.Current.MainWindow,
+            corner: Corner.TopRight,
+            offsetX: 10,
+            offsetY: 10);
+
+        cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+            notificationLifetime: TimeSpan.FromSeconds(3),
+            maximumNotificationCount: MaximumNotificationCount.FromCount(3));
+
+        cfg.Dispatcher = Application.Current.Dispatcher;
+    });
     public ObservableCollection<Movie> Movies { get; set; }
     public ICommand SearchCommand { get; set; }
     public ICommand LogOutCommand { get; set; }
@@ -108,6 +126,7 @@ public class HomeViewModel : BaseViewModel
             if (!CurrentUser.Favorites.Contains(movie.ImdbId))
             {
                 CurrentUser.Favorites += movie.ImdbId + ';';
+                _notifier.ShowSuccess($"{movie.Title} Added\nMove To Favorites To See All");
                 _userRepository.Update(CurrentUser);
             }
         }

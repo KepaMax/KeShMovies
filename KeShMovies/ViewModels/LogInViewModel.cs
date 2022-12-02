@@ -63,9 +63,7 @@ public class LogInViewModel : BaseViewModel
     private void ExecuteLogInCommand(object? parametr)
     {
         User? user = null;
-
         UsernameOrEmail = UsernameOrEmail.Trim();
-        Password = Password.Trim();
 
         if (IsValidEmail())
         {
@@ -75,7 +73,7 @@ public class LogInViewModel : BaseViewModel
             {
                 if (user.Password == Password)
                 {
-                    _notifier.ShowSuccess("Succesfully Logged In");
+                    _notifier.ShowSuccess($"{user.Username} Succesfully Logged In");
                     _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore, _userRepository);
                     return;
                 }
@@ -93,7 +91,7 @@ public class LogInViewModel : BaseViewModel
         {
             if (user.Password == Password)
             {
-                _notifier.ShowSuccess("Succesfully Logged In");
+                _notifier.ShowSuccess($"{user.Username} Succesfully Logged In");
                 _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore,_userRepository);
                 return;
             }

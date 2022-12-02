@@ -77,7 +77,7 @@ At Least 1 UpperCase";
         {
             Email = this.Email.Trim(),
             Username = this.Username.Trim(),
-            Password = this.Password.Trim()
+            Password = this.Password
         };
 
 
@@ -115,11 +115,11 @@ At Least 1 UpperCase";
                 return;
             }
 
-            _notifier.ShowSuccess($"Succesfully Signed Up!");
 
             _users.Add(user);
             _userRepository.Add(user);
 
+            _notifier.ShowSuccess($"{user.Username} Succesfully Signed Up!");
             _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore, _userRepository);
             return;
         }
