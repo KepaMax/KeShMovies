@@ -164,7 +164,7 @@ public class HomeViewModel : BaseViewModel
 
         var movieJson = await OmdbService.GetConcreteMovieByTitle(SearchText);
         var movie = JsonSerializer.Deserialize<Movie>(movieJson);
-        if (movie is not null)
+        if (movie?.imdbID is not null)
             Movies.Add(movie);
 
     }
