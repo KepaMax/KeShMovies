@@ -41,7 +41,7 @@
             </Style>
 
         </Border.Style>
-        <Grid>
+        <Grid x:Name="grid">
 
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -51,24 +51,37 @@
 
 
 
-
             <Border Width="25"
                 CornerRadius="5" 
-                Background="Black" 
+                
                 VerticalAlignment="Top" 
                 HorizontalAlignment="Left"
                 Margin="10 10">
                 <TextBlock HorizontalAlignment="Center" FontSize="11" Text="{Binding imdbRating}" Foreground="White"></TextBlock>
+                <Border.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.60"></SolidColorBrush>
+                </Border.Background>
+            </Border>
+            <Border 
+                CornerRadius="5" 
+            
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Right"
+                Margin="10 10">
+
+                <Border.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.60"></SolidColorBrush>
+                </Border.Background>
+                <TextBlock HorizontalAlignment="Center" FontSize="11" Text="{Binding Year}" Foreground="White"></TextBlock>
             </Border>
 
 
 
-            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock TextWrapping="Wrap" Margin="3 0 0 0" Foreground="WhiteSmoke" FontSize="14" Text="{Binding Title}"></TextBlock>
-                <TextBlock TextWrapping="Wrap" Margin="3 0 0 5" Foreground="WhiteSmoke" FontSize="11" Text="{Binding Year}"></TextBlock>
-            </StackPanel>
 
 
+                <Viewbox  Grid.Row="1" Margin="5" Width="{Binding ElementName=grid, Path=ActualWidth}">
+                    <TextBlock Width="200" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="3 0 0 0" Foreground="WhiteSmoke" FontSize="22" Text="{Binding Title}"></TextBlock>
+                </Viewbox>
 
 
         </Grid>

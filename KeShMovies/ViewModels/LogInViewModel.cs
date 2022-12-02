@@ -63,7 +63,7 @@ public class LogInViewModel : BaseViewModel
     private void ExecuteLogInCommand(object? parametr)
     {
         User? user = null;
-        UsernameOrEmail = UsernameOrEmail.Trim();
+        UsernameOrEmail = UsernameOrEmail?.Trim();
 
         if (IsValidEmail())
         {
@@ -81,7 +81,7 @@ public class LogInViewModel : BaseViewModel
                 return;
             }
             _notifier.ShowError("Email Not Found");
-            return;
+
         }
 
 
@@ -92,13 +92,14 @@ public class LogInViewModel : BaseViewModel
             if (user.Password == Password)
             {
                 _notifier.ShowSuccess($"{user.Username} Succesfully Logged In");
-                _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore,_userRepository);
+                _navigationStore.CurrentViewModel = new HomeViewModel(user, _navigationStore, _userRepository);
                 return;
             }
             _notifier.ShowError("Password Don't Match");
             return;
         }
         _notifier.ShowError("Username Not Found");
+        return;
     }
 
 
