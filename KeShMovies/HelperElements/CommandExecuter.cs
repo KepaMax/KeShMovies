@@ -26,7 +26,7 @@ public class CommandExecuter
         if (eventInfo != null)
         {
             var mInfo = typeof(CommandExecuter).GetMethod("OnRoutedEvent", BindingFlags.NonPublic | BindingFlags.Static);
-            eventInfo.GetAddMethod().Invoke(depObj, new object[] { Delegate.CreateDelegate(eventInfo.EventHandlerType, mInfo) });
+            eventInfo.GetAddMethod()?.Invoke(depObj, new object[] { Delegate.CreateDelegate(eventInfo.EventHandlerType, mInfo) });
         }
         else
         {

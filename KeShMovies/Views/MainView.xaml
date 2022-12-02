@@ -8,9 +8,6 @@
         mc:Ignorable="d"
         Title="KeSh Movies" Height="550" Width="800" Background="#191B1F"  Icon="/StaticFiles/Images/Adsız tasarım.png">
 
-    <Window.Resources>
-        
-    </Window.Resources>
 
     <ContentControl Content="{Binding CurrentViewModel}">
         <ContentControl.Resources>
@@ -42,6 +39,7 @@
             <DataTemplate DataType="{x:Type ViewModels:StartScreenViewModel}">
                 <Views:StartScreenView/>
             </DataTemplate>
+            
         </ContentControl.Resources>
     </ContentControl>
     

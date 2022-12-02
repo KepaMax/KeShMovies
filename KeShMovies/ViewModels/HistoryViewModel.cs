@@ -60,7 +60,7 @@ public class HistoryViewModel : BaseViewModel
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
 
-            if (movie.Poster == "N/A")
+            if (movie?.Poster == "N/A")
                 movie.Poster = "/StaticFiles/Images/no-image-icon-6.png";
 
             if (movie is not null)
