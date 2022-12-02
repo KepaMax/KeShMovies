@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -102,7 +103,7 @@ public class LogInViewModel : BaseViewModel
 
     private bool IsValidEmail()
     {
-        if (UsernameOrEmail is null)
+        if (string.IsNullOrWhiteSpace(UsernameOrEmail))
             return false;
 
         try

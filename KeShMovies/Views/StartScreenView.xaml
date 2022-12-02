@@ -6,11 +6,18 @@
              xmlns:local="clr-namespace:KeShMovies.Views"
              xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="#121212">
+             d:DesignHeight="450" d:DesignWidth="800" Background="Black">
     <Grid>
         <Image 
                         gif:AnimationBehavior.SourceUri="/StaticFiles/Images/KeSh Movies.gif"
-                        Width="200" Height="200">
+                        Width="300" Height="300">
         </Image>
+        <ProgressBar
+            Foreground="#8E0E00"
+            Background="#121212"
+            BorderThickness="0"
+            Height="6"
+            VerticalAlignment="Bottom"
+  IsIndeterminate="True" />
     </Grid>
 </UserControl>

@@ -49,9 +49,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="madara.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="StaticFiles\Images\Adsız tasarım.png" />
     <Resource Include="StaticFiles\Images\denise-jans-OaVJQZ-nFD0-unsplash.jpg" />
     <Resource Include="StaticFiles\Images\Movie Logo.gif" />
