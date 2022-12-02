@@ -67,7 +67,7 @@ public class HomeViewModel : BaseViewModel
 
         if (defaultSearch != null)
         {
-            SearchText= defaultSearch;
+            SearchText = defaultSearch;
             ExecuteSearchCommand(new object());
         }
 
@@ -98,9 +98,10 @@ public class HomeViewModel : BaseViewModel
     }
 
     private void ExecuteSwitchToHistoryCommand(object? obj) => _navigationStore.CurrentViewModel = new HistoryViewModel(CurrentUser, this, _navigationStore, _userRepository);
-
-
+    private void ExecuteLogOutCommand(object? parametr) => _navigationStore.CurrentViewModel = App.Container?.Resolve<LogInViewModel>();
     private void ExecuteSwitchToFavoritesCommand(object? obj) => _navigationStore.CurrentViewModel = new FavoritesViewModel(CurrentUser, this, _navigationStore, _userRepository, SearchText);
+    private bool CanExecuteSearchCommand(object? parametr) => !string.IsNullOrWhiteSpace(SearchText);
+
 
     private void ExecuteRemoveFromFavoritesCommand(object? parametr)
     {
@@ -117,7 +118,6 @@ public class HomeViewModel : BaseViewModel
         }
     }
 
-    private void ExecuteLogOutCommand(object? parametr) => _navigationStore.CurrentViewModel = App.Container?.Resolve<LogInViewModel>();
 
     private void ExecuteAddToFavoritesCommand(object? parametr)
     {
@@ -132,7 +132,6 @@ public class HomeViewModel : BaseViewModel
         }
     }
 
-    private bool CanExecuteSearchCommand(object? parametr) => !string.IsNullOrWhiteSpace(SearchText);
 
     private async void ExecuteSearchCommand(object? parametr)
     {
@@ -165,7 +164,8 @@ public class HomeViewModel : BaseViewModel
 
         var movieJson = await OmdbService.GetConcreteMovieByTitle(SearchText);
         var movie = JsonSerializer.Deserialize<Movie>(movieJson);
-        Movies.Add(movie);
+        if (movie is not null)
+            Movies.Add(movie);
 
     }
 }
