@@ -4,11 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-      xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
-      xmlns:local="clr-namespace:KeShMovies.Views" 
-      xmlns:viewModels="clr-namespace:KeShMovies.ViewModels" 
-      xmlns:customcontrol="clr-namespace:KeShMovies.CustomControl"
       xmlns:dvxcc="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
       xmlns:userControl="clr-namespace:KeShMovies.UserControls"
       xmlns:h="clr-namespace:KeShMovies.HelperElements"
@@ -89,11 +84,7 @@
                             </MenuItem>
 
                         </Menu>
-
                         
-                       
-
-
                         <materialDesign:ColorZone
                          VerticalAlignment="Center"
                          Mode="Standard"
