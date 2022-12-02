@@ -15,12 +15,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="KeSh Movies.gif" />
     <None Remove="madara.gif" />
     <None Remove="UserControls\image_error_full.png" />
     <None Remove="Views\Adsız tasarım.png" />
     <None Remove="Views\denise-jans-OaVJQZ-nFD0-unsplash.jpg" />
     <None Remove="Views\logo.png" />
     <None Remove="Views\Movie Logo.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="KeSh Movies.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
