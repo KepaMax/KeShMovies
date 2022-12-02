@@ -84,7 +84,7 @@
                             Background="#181818"  Icon="{materialDesign:PackIcon Kind=HamburgerMenu}" Height="40"  >
                                 <MenuItem Header="Profile" Icon="{materialDesign:PackIcon Kind=EmojiManProfile}"></MenuItem>
                                 <MenuItem  Header="Favorites" Icon="{materialDesign:PackIcon Kind=Heart}" Command="{Binding SwitchToFavoritesCommand}" />
-                                <MenuItem Header="Watch List" Icon="{materialDesign:PackIcon Kind=WatchLater}" Command="{Binding SwitchToHistoryCommand}"/>
+                                <MenuItem Header="History" Icon="{materialDesign:PackIcon Kind=WatchLater}" Command="{Binding SwitchToHistoryCommand}"/>
                                 <Separator />
                                 <MenuItem Header="Log Out" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Command="{Binding LogOutCommand}"/>
                             </MenuItem>

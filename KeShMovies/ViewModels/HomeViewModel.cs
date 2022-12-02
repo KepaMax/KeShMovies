@@ -131,7 +131,7 @@ public class HomeViewModel : BaseViewModel
                     movie.IsFavorite = true;
 
                 if (movie.Poster == "N/A")
-                    movie.Poster = "/Views/Movie Logo.gif";
+                    movie.Poster = "/StaticFiles/Images/Movie Logo.gif";
 
                 if (movie is not null)
                     Movies.Add(movie);

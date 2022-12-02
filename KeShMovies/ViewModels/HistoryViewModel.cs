@@ -54,7 +54,7 @@ public class HistoryViewModel : BaseViewModel
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
 
             if (movie.Poster == "N/A")
-                movie.Poster = "/Views/Movie Logo.gif";
+                movie.Poster = "/StaticFiles/Images/Movie Logo.gif";
 
             if (movie is not null)
                 History.Add(movie);

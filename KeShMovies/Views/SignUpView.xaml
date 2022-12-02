@@ -75,7 +75,6 @@
 
                     <TextBox
                         ToolTip="{Binding UsernameHelperText}"
-                         ToolTipService.BetweenShowDelay="500"
                         FontSize="15"
                         FontWeight="Medium"
                         FontFamily="Montserrat"                            

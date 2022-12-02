@@ -76,7 +76,7 @@ public class FavoritesViewModel : BaseViewModel
             movie.IsFavorite = true;
 
             if (movie.Poster == "N/A")
-                movie.Poster = "/Views/Movie Logo.gif";
+                movie.Poster = "/StaticFiles/Images/Movie Logo.gif";
 
             if (movie is not null)
                 Favorites.Add(movie);
