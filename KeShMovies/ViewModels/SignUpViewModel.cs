@@ -75,10 +75,12 @@ At Least 1 UpperCase";
     {
         var user = new User()
         {
-            Email = this.Email,
-            Username = this.Username,
-            Password = this.Password,
+            Email = this.Email.Trim(),
+            Username = this.Username.Trim(),
+            Password = this.Password.Trim()
         };
+
+
 
 
         if(!IsValidEmail())

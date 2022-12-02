@@ -63,6 +63,9 @@ public class LogInViewModel : BaseViewModel
     {
         User? user = null;
 
+        UsernameOrEmail = UsernameOrEmail.Trim();
+        Password = Password.Trim();
+
         if (IsValidEmail())
         {
             user = _users?.Find(u => u.Email == UsernameOrEmail);
