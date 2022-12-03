@@ -24,15 +24,13 @@ public class MovieInfoViewModel : BaseViewModel
     private readonly NavigationStore _navigationStore;
     private readonly BaseViewModel _previousViewModel;
     private readonly User _currentUser;
-    private readonly bool _inHistoryView;
     public Movie Movie { get; set; }
     public ICommand UndoCommand { get; set; }
     public ICommand PlayTrailerCommand { get; set; }
 
-    public MovieInfoViewModel(Movie movie, User currentUser, BaseViewModel previousViewModel, NavigationStore navigationStore, bool inHistoryView = false)
+    public MovieInfoViewModel(Movie movie, User currentUser, BaseViewModel previousViewModel, NavigationStore navigationStore)
     {
         _previousViewModel = previousViewModel;
-        _inHistoryView = inHistoryView;
         _currentUser = currentUser;
         _navigationStore = navigationStore;
 

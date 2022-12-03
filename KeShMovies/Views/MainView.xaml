@@ -6,7 +6,7 @@
         xmlns:Views="clr-namespace:KeShMovies.Views"
         xmlns:ViewModels="clr-namespace:KeShMovies.ViewModels"
         mc:Ignorable="d"
-        Title="KeSh Movies" MinWidth="550" MinHeight="700" Background="#191B1F" WindowState="Maximized"  Icon="/StaticFiles/Images/Adsız tasarım.png">
+        Title="KeSh Movies" MinWidth="550" MinHeight="700" Background="#191B1F" WindowState="Maximized" WindowStartupLocation="CenterScreen" Icon="/StaticFiles/Images/Adsız tasarım.png">
 
 
     <ContentControl Content="{Binding CurrentViewModel}">

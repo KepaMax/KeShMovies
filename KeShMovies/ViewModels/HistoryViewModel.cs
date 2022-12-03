@@ -26,16 +26,15 @@ public class HistoryViewModel : BaseViewModel
     public ICommand LoadCommand { get; set; }
     public ICommand UndoCommand { get; set; }
     public ICommand OpenFullInfoCommand { get; set; }
-    
+
 
 
     public HistoryViewModel(User currentUser, BaseViewModel previousViewModel, NavigationStore navigationStore, IUserRepository userRepository)
     {
         _previousViewModel = previousViewModel;
-
         _navigationStore = navigationStore;
         _currentUser = currentUser;
-        _userRepository= userRepository;
+        _userRepository = userRepository;
         History = new();
 
         LoadCommand = new RelayCommand(ExecuteLoadCommand);
@@ -50,6 +49,8 @@ public class HistoryViewModel : BaseViewModel
 
     private async void ExecuteLoadCommand(object? parametr)
     {
+        History.Clear();
+
         if (string.IsNullOrWhiteSpace(_currentUser.History)) return;
 
         var history = _currentUser.History.TrimEnd(';').Split(';');
@@ -76,7 +77,8 @@ public class HistoryViewModel : BaseViewModel
         {
             var movieJson = await OmdbService.GetConcreteMovieById(Movie.ImdbId);
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
-            _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie,_currentUser, this, _navigationStore,true);
+            if (movie is not null)
+                _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie, _currentUser, this, _navigationStore);
         }
 
     }

@@ -78,6 +78,8 @@ public class FavoritesViewModel : BaseViewModel
 
     private async void ExecuteLoadCommand(object? parametr)
     {
+        Favorites.Clear();
+
         if (string.IsNullOrWhiteSpace(_currentUser.Favorites)) return;
 
         var favorites = _currentUser.Favorites.TrimEnd(';').Split(';');
