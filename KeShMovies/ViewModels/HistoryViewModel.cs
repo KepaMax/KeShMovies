@@ -21,7 +21,7 @@ public class HistoryViewModel : BaseViewModel
     private readonly IUserRepository _userRepository;
     private readonly BaseViewModel _previousViewModel;
     private readonly User _currentUser;
-    public string Tooltip { get; set; } = null;
+
     public ObservableCollection<Movie> History { get; set; }
     public ICommand LoadCommand { get; set; }
     public ICommand UndoCommand { get; set; }
@@ -52,11 +52,11 @@ public class HistoryViewModel : BaseViewModel
     {
         if (string.IsNullOrWhiteSpace(_currentUser.History)) return;
 
-        var favorites = _currentUser.History.TrimEnd(';').Split(';');
+        var history = _currentUser.History.TrimEnd(';').Split(';');
 
-        for (int i = favorites.Length - 1; i >= 0; i--)
+        for (int i = history.Length - 1; i >= 0; i--)
         {
-            var movieJson = await OmdbService.GetConcreteMovieById(favorites[i]);
+            var movieJson = await OmdbService.GetConcreteMovieById(history[i]);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
 
@@ -66,7 +66,6 @@ public class HistoryViewModel : BaseViewModel
             if (movie is not null)
             {
                 History.Add(movie);
-                Tooltip = DateTime.Now.ToString();
             }
         }
     }
@@ -76,21 +75,8 @@ public class HistoryViewModel : BaseViewModel
         if (parametr is UC_MovieSimplified Movie)
         {
             var movieJson = await OmdbService.GetConcreteMovieById(Movie.ImdbId);
-
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
-
-            if (!_currentUser.History.Contains(movie.imdbID))
-            {
-                _currentUser.History += movie.imdbID + ';';
-            }
-            else
-            {
-                var changedId = movie.imdbID + ';';
-                var startIndex = _currentUser.History.IndexOf(changedId);
-                _currentUser.History = _currentUser.History.Remove(startIndex, changedId.Length) + changedId;
-            }
-            _userRepository.Update(_currentUser);
-            _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie,_currentUser, this, _navigationStore);
+            _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie,_currentUser, this, _navigationStore,true);
         }
 
     }

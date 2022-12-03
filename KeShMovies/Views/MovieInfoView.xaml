@@ -13,7 +13,7 @@
             BorderThickness="2"
             Opacity="0.95">
         <Border.Background>
-            <ImageBrush ImageSource="{Binding Movie.Poster}" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="{Binding Movie.Poster}" Stretch="Uniform"/>
         </Border.Background>
 
         <materialDesign:Card

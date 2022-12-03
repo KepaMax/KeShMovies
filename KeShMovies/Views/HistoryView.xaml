@@ -62,7 +62,7 @@
                                                                   CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type userControl:UC_MovieSimplified}}}"></dvxcc:EventToCommand>
                                         </dvxcc:Interaction.Behaviors>
                                     </userControl:UC_MovieSimplified>
-
+                                    
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>

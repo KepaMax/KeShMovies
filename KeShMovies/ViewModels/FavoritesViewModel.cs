@@ -24,7 +24,7 @@ public class FavoritesViewModel : BaseViewModel
     private readonly NavigationStore _navigationStore;
     private readonly User _currentUser;
 
-    private readonly string _searchText;
+    private readonly string? _searchText;
     public ICommand LoadCommand { get; set; }
     public ICommand RemoveFromFavoritesCommand { get; set; }
     public ICommand AddToFavoritesCommand { get; set; }
@@ -34,7 +34,7 @@ public class FavoritesViewModel : BaseViewModel
 
     public ObservableCollection<Movie> Favorites { get; set; }
 
-    public FavoritesViewModel(User currentUser, NavigationStore navigationStore, IUserRepository userRepository, string searchText)
+    public FavoritesViewModel(User currentUser, NavigationStore navigationStore, IUserRepository userRepository, string? searchText)
     {
         _searchText = searchText;
         _currentUser = currentUser;
@@ -49,35 +49,20 @@ public class FavoritesViewModel : BaseViewModel
         OpenFullInfoCommand = new RelayCommand(ExecuteOpenFullInfoCommand);
         _userRepository = userRepository;
     }
+    private void ExecuteUndoCommand(object? parametr) => _navigationStore.CurrentViewModel = new HomeViewModel(_currentUser, _navigationStore, _userRepository, _searchText);
 
     private async void ExecuteOpenFullInfoCommand(object? parametr)
     {
         if (parametr is UC_Movie Movie)
         {
             var movieJson = await OmdbService.GetConcreteMovieById(Movie.ImdbId);
-
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
-
-            if (!_currentUser.History.Contains(movie.imdbID))
-            {
-                _currentUser.History += movie.imdbID + ';';
-            }
-            else
-            {
-                var changedId = movie.imdbID + ';';
-                var startIndex = _currentUser.History.IndexOf(changedId);
-                _currentUser.History = _currentUser.History.Remove(startIndex, changedId.Length) + changedId;
-            }
-            _userRepository.Update(_currentUser);
-            _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie,_currentUser,this,_navigationStore); 
+            _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie, _currentUser, this, _navigationStore);
         }
 
     }
 
-    private void ExecuteUndoCommand(object? parametr)
-    {
-        _navigationStore.CurrentViewModel = new HomeViewModel(_currentUser,_navigationStore,_userRepository,_searchText);
-    }
+
     private void ExecuteAddToFavoritesCommand(object? parametr)
     {
         if (parametr is UC_Movie movie && _currentUser is not null)
@@ -90,6 +75,7 @@ public class FavoritesViewModel : BaseViewModel
 
         }
     }
+
     private async void ExecuteLoadCommand(object? parametr)
     {
         if (string.IsNullOrWhiteSpace(_currentUser.Favorites)) return;
@@ -102,13 +88,16 @@ public class FavoritesViewModel : BaseViewModel
             var movieJson = await OmdbService.GetConcreteMovieById(favorites[i]);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
-            movie.IsFavorite = true;
-
-            if (movie.Poster == "N/A")
-                movie.Poster = "/StaticFiles/Images/no-image-icon-6.png";
-
             if (movie is not null)
+            {
+                movie.IsFavorite = true;
+
+                if (movie.Poster == "N/A")
+                    movie.Poster = "/StaticFiles/Images/no-image-icon-6.png";
+
                 Favorites.Add(movie);
+            }
+
         }
 
     }

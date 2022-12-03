@@ -6,12 +6,12 @@
         xmlns:Views="clr-namespace:KeShMovies.Views"
         xmlns:ViewModels="clr-namespace:KeShMovies.ViewModels"
         mc:Ignorable="d"
-        Title="KeSh Movies" Height="550" Width="800" Background="#191B1F"  Icon="/StaticFiles/Images/Adsız tasarım.png">
+        Title="KeSh Movies" MinWidth="550" MinHeight="700" Background="#191B1F" WindowState="Maximized"  Icon="/StaticFiles/Images/Adsız tasarım.png">
 
 
     <ContentControl Content="{Binding CurrentViewModel}">
         <ContentControl.Resources>
-            
+
             <DataTemplate DataType="{x:Type ViewModels:HomeViewModel}">
                 <Views:HomeView/>
             </DataTemplate>
@@ -23,15 +23,15 @@
             <DataTemplate DataType="{x:Type ViewModels:LogInViewModel}">
                 <Views:LogInView/>
             </DataTemplate>
-            
+
             <DataTemplate DataType="{x:Type ViewModels:FavoritesViewModel}">
                 <Views:FavoritesView/>
             </DataTemplate>
-            
+
             <DataTemplate DataType="{x:Type ViewModels:HistoryViewModel}">
                 <Views:HistoryView/>
             </DataTemplate>
-            
+
             <DataTemplate DataType="{x:Type ViewModels:MovieInfoViewModel}">
                 <Views:MovieInfoView/>
             </DataTemplate>
@@ -39,8 +39,8 @@
             <DataTemplate DataType="{x:Type ViewModels:StartScreenViewModel}">
                 <Views:StartScreenView/>
             </DataTemplate>
-            
+
         </ContentControl.Resources>
     </ContentControl>
-    
+
 </Window>

@@ -51,7 +51,7 @@ public class HomeViewModel : BaseViewModel
 
     public string? SearchText { get; set; }
 
-    public HomeViewModel(User currentUser, NavigationStore navigationStore, IUserRepository userRepository, string defaultSearch = null)
+    public HomeViewModel(User currentUser, NavigationStore navigationStore, IUserRepository userRepository, string? defaultSearch = null)
     {
         _currentUser = currentUser;
         _navigationStore = navigationStore;
@@ -127,6 +127,7 @@ public class HomeViewModel : BaseViewModel
 
     private async void ExecuteSearchCommand(object? parametr)
     {
+        if (string.IsNullOrWhiteSpace(SearchText)) return;
 
         var jsonStr = await OmdbService.GetAllMoviesByTitle(SearchText);
 

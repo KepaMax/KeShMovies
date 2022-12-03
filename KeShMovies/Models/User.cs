@@ -14,17 +14,7 @@ public class User
     public string? Email { get; set; }
     public string? Username { get; set; }
     public string? Password { get; set; }
-    public string? History { get; set; } = string.Empty;
-    public string? Favorites { get; set; } = string.Empty;
-
-    public override bool Equals(object? obj)
-    {
-        if (obj is User other)
-        {
-            return Email == other.Email && Username == other.Username && Password == other.Password;
-        }
-
-        return false;
-    }
+    public string History { get; set; } = string.Empty;
+    public string Favorites { get; set; } = string.Empty;
 
 }
