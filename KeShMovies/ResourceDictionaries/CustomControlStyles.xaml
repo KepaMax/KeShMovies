@@ -178,4 +178,28 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+    <ControlTemplate x:Key="CustomButton" TargetType="Button">
+        <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>
+    </ControlTemplate>
+
+    <Style x:Key="CustomButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#121212"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="Montserrat"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Margin" Value="0,50,0,0"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#181818"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
