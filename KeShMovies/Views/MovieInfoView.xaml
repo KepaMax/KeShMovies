@@ -139,7 +139,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Text="Imdb Rating: " FontFamily="Segoe UI Black" FontSize="16" />
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.imdbRating}"  Foreground="White"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.imdbRating}" FontFamily="Comic Sans MS, Verdana" FontSize="13"  Foreground="White"/>
                             
 
 
@@ -150,7 +150,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Language: " FontFamily="Segoe UI Black" FontSize="16"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.Language}"  Foreground="White"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Language}" FontFamily="Comic Sans MS, Verdana"  FontSize="13" Foreground="White"/>
                         </Grid>
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
@@ -158,7 +158,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Genre: " FontFamily="Segoe UI Black" FontSize="16"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.Genre}"  Foreground="White"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Genre}" FontFamily="Comic Sans MS, Verdana" FontSize="13" Foreground="White"/>
 
                         </Grid>
 
@@ -168,7 +168,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Actors: " FontFamily="Segoe UI Black" FontSize="16"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.Actors}"  Foreground="White"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Actors}" FontFamily="Comic Sans MS, Verdana" FontSize="13" Foreground="White"/>
 
                         </Grid>
                         <Grid Grid.Row="4">
@@ -177,7 +177,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Country: " FontFamily="Segoe UI Black" FontSize="16"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.Country}"  Foreground="White"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Country}" FontFamily="Comic Sans MS, Verdana" FontSize="13" Foreground="White"/>
 
                         </Grid>
                         <Grid Grid.Row="5">
@@ -186,7 +186,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Year: " FontFamily="Segoe UI Black" FontSize="16"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.Year}"  Foreground="White"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Year}" FontFamily="Comic Sans MS, Verdana" FontSize="13"  Foreground="White"/>
 
                         </Grid>
                         <Grid Grid.Row="6">
@@ -195,7 +195,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Type: " FontFamily="Segoe UI Black" FontSize="16"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.Type}"  Foreground="White"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Type}" FontFamily="Comic Sans MS, Verdana" FontSize="13"  Foreground="White"/>
 
                         </Grid>
                         <Grid Grid.Row="7">
@@ -204,7 +204,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Box Office: " FontFamily="Segoe UI Black" FontSize="16"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.BoxOffice}"  Foreground="White"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.BoxOffice}" FontFamily="Comic Sans MS, Verdana" FontSize="13"  Foreground="White"/>
 
                         </Grid>
             <!--  Language Genre Actors PLot Country Year Type Imdb Production Director Runtime   -->
@@ -214,7 +214,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Director: " FontFamily="Segoe UI Black" FontSize="16"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.Director}"  Foreground="White"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Director}" FontFamily="Comic Sans MS, Verdana" FontSize="13"  Foreground="White"/>
 
                         </Grid>
                         <Grid Grid.Row="9">
@@ -223,7 +223,7 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Runtime: " FontFamily="Segoe UI Black" FontSize="16"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Movie.Runtime}"  Foreground="White"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Movie.Runtime}" FontFamily="Comic Sans MS, Verdana" FontSize="13" Foreground="White"/>
 
                         </Grid>
                         <Grid Grid.Row="10">
@@ -234,7 +234,7 @@
                             <TextBlock Text="Plot: " FontFamily="Segoe UI Black" FontSize="16"/>
                             <ScrollViewer Grid.Column="1" Margin="0,10,0,0" Grid.Row="1" VerticalScrollBarVisibility="Auto">
 
-                                <TextBlock Grid.Column="1" Text="{Binding Movie.Plot}" Foreground="White" TextWrapping="WrapWithOverflow"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Movie.Plot}" FontFamily="Comic Sans MS, Verdana" Foreground="White" FontSize="13" TextWrapping="WrapWithOverflow"/>
 
                             </ScrollViewer>
                         </Grid>
