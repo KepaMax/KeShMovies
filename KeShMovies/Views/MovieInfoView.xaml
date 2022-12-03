@@ -64,7 +64,7 @@
 
                         </Grid>
 
-                        <Button Command="{Binding PlayTrailerCommand}"  Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Center"  Content="{materialDesign:PackIcon Kind=Play, Size=25}"
+                        <Button Cursor="Hand" Command="{Binding PlayTrailerCommand}"  Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Center"  Content="{materialDesign:PackIcon Kind=Play, Size=25}"
                                 
   ToolTip="Go To Trailer"
    >
@@ -90,7 +90,7 @@
                             </Button.Template>
                         </Button>
 
-                        <Button  Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="2" HorizontalAlignment="Center" Command="{Binding UndoCommand}" Content="{materialDesign:PackIcon Kind=Undo, Size=25}"
+                        <Button Cursor="Hand" Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="2" HorizontalAlignment="Center" Command="{Binding UndoCommand}" Content="{materialDesign:PackIcon Kind=Undo, Size=25}"
                                 
   ToolTip="Go Back"
    >

@@ -103,7 +103,7 @@
                         h:EnterKeyHelpers.EnterKeyCommand="{Binding SignUpCommand}"/>
 
 
-                    <Button            
+                    <Button     
                         Command="{Binding SignUpCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}}"
                         BorderThickness="0"

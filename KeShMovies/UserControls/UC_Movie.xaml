@@ -9,7 +9,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="225" Width="175" >
+             Height="225" Width="175" Cursor="Hand">
 
     <Border Height="200" Width="150" CornerRadius="20">
         <Border.Background>

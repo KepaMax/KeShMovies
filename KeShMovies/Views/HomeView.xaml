@@ -75,11 +75,11 @@
 
                         <Menu materialDesign:MenuAssist.TopLevelMenuItemHeight="20" Width="47" Foreground="WhiteSmoke" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
                             <MenuItem
-                            Background="#181818"  Icon="{materialDesign:PackIcon Kind=HamburgerMenu}" Height="40">
-                                <MenuItem  Header="Favorites" Icon="{materialDesign:PackIcon Kind=Heart}" Command="{Binding SwitchToFavoritesCommand}" />
-                                <MenuItem Header="History" Icon="{materialDesign:PackIcon Kind=WatchLater}" Command="{Binding SwitchToHistoryCommand}"/>
+                            Background="#181818"  Icon="{materialDesign:PackIcon Kind=HamburgerMenu}" Cursor="Hand" Height="40">
+                                <MenuItem Cursor="Hand" Header="Favorites" Icon="{materialDesign:PackIcon Kind=Heart}" Command="{Binding SwitchToFavoritesCommand}" />
+                                <MenuItem Cursor="Hand" Header="History" Icon="{materialDesign:PackIcon Kind=WatchLater}" Command="{Binding SwitchToHistoryCommand}"/>
                                 <Separator />
-                                <MenuItem Header="Log Out" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Command="{Binding LogOutCommand}"/>
+                                <MenuItem Cursor="Hand" Header="Log Out" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Command="{Binding LogOutCommand}"/>
                             </MenuItem>
 
                         </Menu>
@@ -112,7 +112,7 @@
                                 h:EnterKeyHelpers.EnterKeyCommand="{Binding SearchCommand}"/>
 
 
-                                <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}" Command="{Binding SearchCommand}">
+                                <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}" Command="{Binding SearchCommand}" Cursor="Hand">
                                     <materialDesign:PackIcon Kind="Search" Opacity=".56" />
                                 </Button>
 

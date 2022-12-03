@@ -89,7 +89,7 @@
 
 
 
-                        <Button Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Center" Command="{Binding UndoCommand}" Content="{materialDesign:PackIcon Kind=Undo, Size=25}"
+                        <Button Cursor="Hand" Foreground="WhiteSmoke" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Center" Command="{Binding UndoCommand}" Content="{materialDesign:PackIcon Kind=Undo, Size=25}"
                                 
   ToolTip="Icon"
    >
