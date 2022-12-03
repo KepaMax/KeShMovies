@@ -20,7 +20,7 @@ public class HistoryViewModel : BaseViewModel
     private readonly NavigationStore _navigationStore;
     private readonly IUserRepository _userRepository;
     private readonly BaseViewModel _previousViewModel;
-    public User CurrentUser { get; set; }
+    private readonly User _currentUser;
     public string Tooltip { get; set; } = null;
     public ObservableCollection<Movie> History { get; set; }
     public ICommand LoadCommand { get; set; }
@@ -34,7 +34,7 @@ public class HistoryViewModel : BaseViewModel
         _previousViewModel = previousViewModel;
 
         _navigationStore = navigationStore;
-        CurrentUser = currentUser;
+        _currentUser = currentUser;
         _userRepository= userRepository;
         History = new();
 
@@ -50,9 +50,9 @@ public class HistoryViewModel : BaseViewModel
 
     private async void ExecuteLoadCommand(object? parametr)
     {
-        if (string.IsNullOrWhiteSpace(CurrentUser.History)) return;
+        if (string.IsNullOrWhiteSpace(_currentUser.History)) return;
 
-        var favorites = CurrentUser.History.TrimEnd(';').Split(';');
+        var favorites = _currentUser.History.TrimEnd(';').Split(';');
 
         for (int i = favorites.Length - 1; i >= 0; i--)
         {
@@ -79,18 +79,18 @@ public class HistoryViewModel : BaseViewModel
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
 
-            if (!CurrentUser.History.Contains(movie.imdbID))
+            if (!_currentUser.History.Contains(movie.imdbID))
             {
-                CurrentUser.History += movie.imdbID + ';';
+                _currentUser.History += movie.imdbID + ';';
             }
             else
             {
                 var changedId = movie.imdbID + ';';
-                var startIndex = CurrentUser.History.IndexOf(changedId);
-                CurrentUser.History = CurrentUser.History.Remove(startIndex, changedId.Length) + changedId;
+                var startIndex = _currentUser.History.IndexOf(changedId);
+                _currentUser.History = _currentUser.History.Remove(startIndex, changedId.Length) + changedId;
             }
-            _userRepository.Update(CurrentUser);
-            _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie, this, _navigationStore);
+            _userRepository.Update(_currentUser);
+            _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie,_currentUser, this, _navigationStore);
         }
 
     }

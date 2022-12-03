@@ -24,7 +24,8 @@ public class HomeViewModel : BaseViewModel
 {
     private readonly NavigationStore _navigationStore;
     private readonly IUserRepository _userRepository;
-    private Notifier _notifier = new Notifier(cfg =>
+    private readonly User _currentUser;
+    private readonly Notifier _notifier = new Notifier(cfg =>
     {
         cfg.PositionProvider = new WindowPositionProvider(
             parentWindow: Application.Current.MainWindow,
@@ -38,6 +39,7 @@ public class HomeViewModel : BaseViewModel
 
         cfg.Dispatcher = Application.Current.Dispatcher;
     });
+
     public ObservableCollection<Movie> Movies { get; set; }
     public ICommand SearchCommand { get; set; }
     public ICommand LogOutCommand { get; set; }
@@ -48,11 +50,10 @@ public class HomeViewModel : BaseViewModel
     public ICommand OpenFullInfoCommand { get; set; }
 
     public string? SearchText { get; set; }
-    public User CurrentUser { get; set; }
 
     public HomeViewModel(User currentUser, NavigationStore navigationStore, IUserRepository userRepository, string defaultSearch = null)
     {
-        CurrentUser = currentUser;
+        _currentUser = currentUser;
         _navigationStore = navigationStore;
         _userRepository = userRepository;
         Movies = new();
@@ -81,39 +82,30 @@ public class HomeViewModel : BaseViewModel
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
 
-            if (!CurrentUser.History.Contains(movie.imdbID))
-            {
-                CurrentUser.History += movie.imdbID + ';';
-            }
-            else
-            {
-                var changedId = movie.imdbID + ';';
-                var startIndex = CurrentUser.History.IndexOf(changedId);
-                CurrentUser.History = CurrentUser.History.Remove(startIndex, changedId.Length) + changedId;
-            }
-            _userRepository.Update(CurrentUser);
-            _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie, this, _navigationStore);
+            
+            _userRepository.Update(_currentUser);
+            _navigationStore.CurrentViewModel = new MovieInfoViewModel(movie, _currentUser, this, _navigationStore);
         }
 
     }
 
-    private void ExecuteSwitchToHistoryCommand(object? obj) => _navigationStore.CurrentViewModel = new HistoryViewModel(CurrentUser, this, _navigationStore, _userRepository);
+    private void ExecuteSwitchToHistoryCommand(object? obj) => _navigationStore.CurrentViewModel = new HistoryViewModel(_currentUser, this, _navigationStore, _userRepository);
     private void ExecuteLogOutCommand(object? parametr) => _navigationStore.CurrentViewModel = App.Container?.Resolve<LogInViewModel>();
-    private void ExecuteSwitchToFavoritesCommand(object? obj) => _navigationStore.CurrentViewModel = new FavoritesViewModel(CurrentUser, this, _navigationStore, _userRepository, SearchText);
+    private void ExecuteSwitchToFavoritesCommand(object? obj) => _navigationStore.CurrentViewModel = new FavoritesViewModel(_currentUser, _navigationStore, _userRepository, SearchText);
     private bool CanExecuteSearchCommand(object? parametr) => !string.IsNullOrWhiteSpace(SearchText);
 
 
     private void ExecuteRemoveFromFavoritesCommand(object? parametr)
     {
-        if (parametr is UC_Movie movie && CurrentUser is not null)
+        if (parametr is UC_Movie movie && _currentUser is not null)
         {
             var removeId = movie.ImdbId + ';';
-            var startIndex = CurrentUser.Favorites.IndexOf(removeId);
+            var startIndex = _currentUser.Favorites.IndexOf(removeId);
 
-            if (CurrentUser.Favorites.Contains(movie.ImdbId))
+            if (_currentUser.Favorites.Contains(movie.ImdbId))
             {
-                CurrentUser.Favorites = CurrentUser.Favorites.Remove(startIndex, removeId.Length);
-                _userRepository.Update(CurrentUser);
+                _currentUser.Favorites = _currentUser.Favorites.Remove(startIndex, removeId.Length);
+                _userRepository.Update(_currentUser);
             }
         }
     }
@@ -121,13 +113,13 @@ public class HomeViewModel : BaseViewModel
 
     private void ExecuteAddToFavoritesCommand(object? parametr)
     {
-        if (parametr is UC_Movie movie && CurrentUser is not null)
+        if (parametr is UC_Movie movie && _currentUser is not null)
         {
-            if (!CurrentUser.Favorites.Contains(movie.ImdbId))
+            if (!_currentUser.Favorites.Contains(movie.ImdbId))
             {
-                CurrentUser.Favorites += movie.ImdbId + ';';
+                _currentUser.Favorites += movie.ImdbId + ';';
                 _notifier.ShowSuccess($"{movie.Title} Added\nMove To Favorites To See All");
-                _userRepository.Update(CurrentUser);
+                _userRepository.Update(_currentUser);
             }
         }
     }
@@ -149,7 +141,7 @@ public class HomeViewModel : BaseViewModel
                 var movieCollectionJson = await OmdbService.GetConcreteMovieById(result.imdbID);
 
                 var movieFromCollection = JsonSerializer.Deserialize<Movie>(movieCollectionJson);
-                if (CurrentUser.Favorites.Contains(movieFromCollection.imdbID))
+                if (_currentUser.Favorites.Contains(movieFromCollection.imdbID))
                     movieFromCollection.IsFavorite = true;
 
                 if (movieFromCollection.Poster == "N/A")

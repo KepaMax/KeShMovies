@@ -23,15 +23,17 @@ public class MovieInfoViewModel : BaseViewModel
 
     private readonly NavigationStore _navigationStore;
     private readonly BaseViewModel _previousViewModel;
+    private readonly User _currentUser;
     public Movie Movie { get; set; }
     public ICommand UndoCommand { get; set; }
     public ICommand PlayTrailerCommand { get; set; }
 
-    public MovieInfoViewModel(Movie movie,BaseViewModel previousViewModel, NavigationStore navigationStore)
+    public MovieInfoViewModel(Movie movie,User currentUser, BaseViewModel previousViewModel, NavigationStore navigationStore)
     {
         _previousViewModel = previousViewModel;
-
+        _currentUser = currentUser;
         _navigationStore=navigationStore;
+
         Movie = movie;
         if (Movie.Poster == "N/A")
             Movie.Poster = "/StaticFiles/Images/Movie Logo.gif";
@@ -48,6 +50,18 @@ public class MovieInfoViewModel : BaseViewModel
 
     private void ExecutePlayTrailerCommand(object? parametr)
     {
+
+        if (!_currentUser.History.Contains(Movie.imdbID))
+        {
+            _currentUser.History += Movie.imdbID + ';';
+        }
+        else
+        {
+            var changedId = Movie.imdbID + ';';
+            var startIndex = _currentUser.History.IndexOf(changedId);
+            _currentUser.History = _currentUser.History.Remove(startIndex, changedId.Length) + changedId;
+        }
+
         NameValueCollection nameValueCollection = new NameValueCollection();
         nameValueCollection.Add("q", Movie.Title);
         var webClient = new WebClient();
