@@ -95,11 +95,11 @@ public class FavoritesViewModel : BaseViewModel
         if (string.IsNullOrWhiteSpace(_currentUser.Favorites)) return;
 
         var favorites = _currentUser.Favorites.TrimEnd(';').Split(';');
-        
 
-        foreach (var movieId in favorites)
+
+        for (int i = favorites.Length - 1; i >= 0; i--)
         {
-            var movieJson = await OmdbService.GetConcreteMovieById(movieId);
+            var movieJson = await OmdbService.GetConcreteMovieById(favorites[i]);
 
             var movie = JsonSerializer.Deserialize<Movie>(movieJson);
             movie.IsFavorite = true;
@@ -110,6 +110,7 @@ public class FavoritesViewModel : BaseViewModel
             if (movie is not null)
                 Favorites.Add(movie);
         }
+
     }
 
     private void ExecuteRemoveCommand(object? parametr)
